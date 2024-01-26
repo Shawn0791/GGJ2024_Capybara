@@ -184,7 +184,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fartSpawnPoint: {fileID: 932957334439616819}
   idleFartSpawnPoint: {fileID: 1167667396855545723}
-  fartForce: 100
+  fartForce: 80
+  defaultSprite: {fileID: -1066814445, guid: 8e36f9f97da937241b3463ced90ba06d, type: 3}
+  rollingSprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
 --- !u!114 &5848884392202992902
 MonoBehaviour:
   m_ObjectHideFlags: 0
