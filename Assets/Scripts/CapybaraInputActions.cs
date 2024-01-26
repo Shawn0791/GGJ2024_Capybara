@@ -35,6 +35,15 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fart"",
+                    ""type"": ""Button"",
+                    ""id"": ""e65bb070-d1dc-4587-942c-7b72f2e588d9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -59,6 +68,17 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""658a5c2b-1d0b-49b1-9bfa-baaf3c7ba176"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -68,6 +88,7 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
         // Basic
         m_Basic = asset.FindActionMap("Basic", throwIfNotFound: true);
         m_Basic_Move = m_Basic.FindAction("Move", throwIfNotFound: true);
+        m_Basic_Fart = m_Basic.FindAction("Fart", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -130,11 +151,13 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Basic;
     private List<IBasicActions> m_BasicActionsCallbackInterfaces = new List<IBasicActions>();
     private readonly InputAction m_Basic_Move;
+    private readonly InputAction m_Basic_Fart;
     public struct BasicActions
     {
         private @CapybaraInputActions m_Wrapper;
         public BasicActions(@CapybaraInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Basic_Move;
+        public InputAction @Fart => m_Wrapper.m_Basic_Fart;
         public InputActionMap Get() { return m_Wrapper.m_Basic; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -147,6 +170,9 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @Fart.started += instance.OnFart;
+            @Fart.performed += instance.OnFart;
+            @Fart.canceled += instance.OnFart;
         }
 
         private void UnregisterCallbacks(IBasicActions instance)
@@ -154,6 +180,9 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @Fart.started -= instance.OnFart;
+            @Fart.performed -= instance.OnFart;
+            @Fart.canceled -= instance.OnFart;
         }
 
         public void RemoveCallbacks(IBasicActions instance)
@@ -174,5 +203,6 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
     public interface IBasicActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnFart(InputAction.CallbackContext context);
     }
 }
