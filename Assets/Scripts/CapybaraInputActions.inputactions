@@ -1,0 +1,45 @@
+{
+    "name": "CapybaraInputActions",
+    "maps": [
+        {
+            "name": "Basic",
+            "id": "b64489e5-bdc1-42f0-a09e-6d0c7dcad465",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "35d28390-5c48-4e30-a6e3-d502a6f7ee63",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "279dc97f-6a90-438e-bbbc-1de8360fbc2e",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "01a9c937-3d0a-4135-8221-00955ab85bfc",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
