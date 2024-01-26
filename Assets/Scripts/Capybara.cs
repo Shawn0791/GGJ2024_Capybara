@@ -33,7 +33,7 @@ public class Capybara : Singleton<Capybara>
     // Update is called once per frame
     void Update()
     {
-
+        GroundDetection();
     }
 
     // TODO: delete this, only here for testing
@@ -59,6 +59,26 @@ public class Capybara : Singleton<Capybara>
             isTouchingGround = true;
             polygonCollider.enabled = true;
             circleCollider2D.enabled = false;
+        }
+    }
+
+    public LayerMask groundLayer; // 地面层的LayerMask
+    public float raycastDistance = 1.0f; // 射线检测的距离
+    [SerializeField]private bool isGround;
+
+    private void GroundDetection()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, raycastDistance, groundLayer);
+
+        if (hit.collider != null) 
+        {
+            // 如果射线击中地面，则输出地面的位置
+            Debug.Log("地面位置: " + hit.point);
+            isGround = true;
+        }
+        else
+        {
+            isGround = false;
         }
     }
 }
