@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IMountable
+public interface IDamageDealer
 {
-    void Mount();
-    void Dismount();
+    int DealDamage();
 }
