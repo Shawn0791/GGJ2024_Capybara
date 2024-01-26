@@ -11,7 +11,7 @@ public class Capybara : Singleton<Capybara>
     [SerializeField] private float fartForce = 100f;
     private Rigidbody2D rb;
     private CapybaraInputActions inputActions;
-    private PolygonCollider2D polygonCollider;
+    private BoxCollider2D boxCollider2D;
     private CircleCollider2D circleCollider2D;
     private bool isTouchingGround = false;
 
@@ -21,7 +21,7 @@ public class Capybara : Singleton<Capybara>
         inputActions = new CapybaraInputActions();
         inputActions.Enable();
         rb = GetComponent<Rigidbody2D>();
-        polygonCollider = GetComponent<PolygonCollider2D>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
         circleCollider2D = GetComponent<CircleCollider2D>();
     }
 
@@ -47,7 +47,7 @@ public class Capybara : Singleton<Capybara>
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             isTouchingGround = false;
-            polygonCollider.enabled = false;
+            boxCollider2D.enabled = false;
             circleCollider2D.enabled = true;
         }
     }
@@ -57,7 +57,7 @@ public class Capybara : Singleton<Capybara>
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             isTouchingGround = true;
-            polygonCollider.enabled = true;
+            boxCollider2D.enabled = true;
             circleCollider2D.enabled = false;
         }
     }
