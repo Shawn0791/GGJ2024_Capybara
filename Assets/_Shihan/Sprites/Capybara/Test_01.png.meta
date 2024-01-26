@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8e36f9f97da937241b3463ced90ba06d
+guid: 95b51254bb099aa4799dfe8761f48189
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: capybara-Sheet_0
+      name: Test_01_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33c96af724df94d439f5c9bc9486aeaf
-      internalID: -1066814445
+      spriteID: 5b8eaee2573b26545bd82377a182a73c
+      internalID: -69239849
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: capybara-Sheet_1
+      name: Test_01_1
       rect:
         serializedVersion: 2
         x: 32
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6eaaa930cb14f7340ba1ab23aacdc878
-      internalID: 349182776
+      spriteID: b1ebd2f7902c53e4791eea82209ee9b1
+      internalID: -574461129
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: capybara-Sheet_2
+      name: Test_01_2
       rect:
         serializedVersion: 2
         x: 64
@@ -179,8 +179,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fefe648652c42c7438f6e552d42ba433
-      internalID: -915618780
+      spriteID: 630c80e0918c6b04c8cecc4b9152ebb9
+      internalID: -1112406894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Test_01_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c593bfdaf0043174ca73f37a9237f628
+      internalID: 528517830
       vertices: []
       indices: 
       edges: []
@@ -196,9 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      capybara-Sheet_0: -1066814445
-      capybara-Sheet_1: 349182776
-      capybara-Sheet_2: -915618780
+      Test_01_0: -69239849
+      Test_01_1: -574461129
+      Test_01_2: -1112406894
+      Test_01_3: 528517830
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

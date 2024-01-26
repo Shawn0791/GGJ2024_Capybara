@@ -438,26 +438,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1300287969159067639, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
-      propertyPath: m_Radius
-      value: 0.0001
-      objectReference: {fileID: 0}
-    - target: {fileID: 1300287969159067639, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.061002746
-      objectReference: {fileID: 0}
-    - target: {fileID: 1300287969159067639, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.19418997
-      objectReference: {fileID: 0}
-    - target: {fileID: 5542726772536833866, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
-      propertyPath: raycastDistance
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5542726772536833866, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 65536
-      objectReference: {fileID: 0}
     - target: {fileID: 8401400520260276864, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
       propertyPath: m_Name
       value: Capybara

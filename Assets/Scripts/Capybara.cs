@@ -13,7 +13,7 @@ public class Capybara : Singleton<Capybara>
     [SerializeField] private Sprite rollingSprite;
     private Rigidbody2D rb;
     private CapybaraInputActions inputActions;
-    private PolygonCollider2D polygonCollider;
+    private BoxCollider2D boxCollider2D;
     private CircleCollider2D circleCollider2D;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -27,10 +27,10 @@ public class Capybara : Singleton<Capybara>
         inputActions = new CapybaraInputActions();
         inputActions.Enable();
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        polygonCollider = GetComponent<PolygonCollider2D>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
         circleCollider2D = GetComponent<CircleCollider2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = defaultSprite;
     }
 
@@ -49,37 +49,6 @@ public class Capybara : Singleton<Capybara>
     public void OnFart()
     {
         rb.AddForceAtPosition(-idleFartSpawnPoint.right * fartForce, fartSpawnPoint.position);
-    }
-
-    private void DetectGroundCollision()
-    {
-        RaycastHit raycastHit;
-        if (Physics.Raycast(transform.position, new Vector2(0, -1), out raycastHit))
-        {
-
-        }
-    }
-
-    public void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            animator.enabled = false;
-            spriteRenderer.sprite = rollingSprite;
-            polygonCollider.enabled = false;
-            circleCollider2D.enabled = true;
-        }
-    }
-
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            spriteRenderer.sprite = defaultSprite;
-            animator.enabled = true;
-            polygonCollider.enabled = true;
-            circleCollider2D.enabled = false;
-        }
     }
 
     private void GroundDetection()

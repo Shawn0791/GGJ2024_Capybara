@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: DeepBackground
+    uniqueID: 3180020841
+    locked: 0
+  - name: Background
+    uniqueID: 3134508095
+    locked: 0
+  - name: Middle
+    uniqueID: 885731
+    locked: 0
+  - name: Front
+    uniqueID: 4261807677
+    locked: 0
+  - name: UI
+    uniqueID: 3501205159
+    locked: 0
