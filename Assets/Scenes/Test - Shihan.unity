@@ -523,6 +523,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Capybara
       objectReference: {fileID: 0}
+    - target: {fileID: 8401400520260276864, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1590,6 +1594,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crocodile
       objectReference: {fileID: 0}
+    - target: {fileID: 7305667794255409466, guid: 7f26b635c62e63a4eaaa2896cf108820, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1646,6 +1654,10 @@ PrefabInstance:
     - target: {fileID: 9217465835413462415, guid: 41d1a16ef202985449fb3f7614d24c94, type: 3}
       propertyPath: m_Name
       value: Mushroom_interactable
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217465835413462415, guid: 41d1a16ef202985449fb3f7614d24c94, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
