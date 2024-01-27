@@ -271,9 +271,6 @@ MonoBehaviour:
   fartSpawnPoint: {fileID: 932957334439616819}
   idleFartSpawnPoint: {fileID: 1167667396855545723}
   fartForce: 150
-  defaultSprite: {fileID: -1066814445, guid: 8e36f9f97da937241b3463ced90ba06d, type: 3}
-  rollingSprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  raycastOrigin: {fileID: 8114002260918741073}
   raycastDistance: 0.4
   velocityThreshold: 5
   moveSpeed: 5

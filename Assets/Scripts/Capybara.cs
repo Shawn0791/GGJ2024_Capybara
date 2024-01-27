@@ -15,7 +15,6 @@ public class Capybara : Singleton<Capybara>
     [SerializeField] private Transform fartSpawnPoint;
     [SerializeField] private Transform idleFartSpawnPoint;
     [SerializeField] private float fartForce = 100f;
-    [SerializeField] private Sprite defaultSprite;
     [SerializeField] private float raycastDistance = 1.0f;
     [SerializeField] private float velocityThreshold = 5f;
     [SerializeField] private float moveSpeed = 5f;
@@ -39,7 +38,6 @@ public class Capybara : Singleton<Capybara>
         circleCollider2D = GetComponent<CircleCollider2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = defaultSprite;
     }
 
     private void Start()
