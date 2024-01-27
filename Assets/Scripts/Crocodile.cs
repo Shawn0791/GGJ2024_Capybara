@@ -65,7 +65,6 @@ public class Crocodile : MonoBehaviour, IMountable
         {
             animator.SetBool("isSleeping", true);
             player.SetCurrentInteractibleObject(null);
-            player = null;
         }
         else if (collision.CompareTag("InteractablePort"))
         {
