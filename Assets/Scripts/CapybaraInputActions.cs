@@ -28,18 +28,27 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
             ""id"": ""b64489e5-bdc1-42f0-a09e-6d0c7dcad465"",
             ""actions"": [
                 {
-                    ""name"": ""Move"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""35d28390-5c48-4e30-a6e3-d502a6f7ee63"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""Fart"",
                     ""type"": ""Button"",
                     ""id"": ""e65bb070-d1dc-4587-942c-7b72f2e588d9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""a766bf61-8c32-4118-a9f3-a51dc7ce6ed4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""73aa2f51-f00d-4867-b9bd-b4f0467ca4d2"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -59,59 +68,26 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""b0e15a1d-bbdf-464d-a4cb-0a946a399ccd"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""9d74b227-aa00-4e44-aca3-e6f69cef8a29"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""a1eb1d00-f36a-4649-a6b0-f0aa54dbab7d"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""8648d65a-a5a3-48cf-9bd8-64c63353d250"",
+                    ""name"": """",
+                    ""id"": ""7a830481-79b3-410e-be44-68751b0391b5"",
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Left"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""right"",
-                    ""id"": ""c5270253-1108-4c1e-9a1a-59daeb3ecef2"",
+                    ""name"": """",
+                    ""id"": ""28143262-f7ab-4ebe-8266-f60aac3470fb"",
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Right"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -120,8 +96,9 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
 }");
         // Basic
         m_Basic = asset.FindActionMap("Basic", throwIfNotFound: true);
-        m_Basic_Move = m_Basic.FindAction("Move", throwIfNotFound: true);
         m_Basic_Fart = m_Basic.FindAction("Fart", throwIfNotFound: true);
+        m_Basic_Left = m_Basic.FindAction("Left", throwIfNotFound: true);
+        m_Basic_Right = m_Basic.FindAction("Right", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -183,14 +160,16 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
     // Basic
     private readonly InputActionMap m_Basic;
     private List<IBasicActions> m_BasicActionsCallbackInterfaces = new List<IBasicActions>();
-    private readonly InputAction m_Basic_Move;
     private readonly InputAction m_Basic_Fart;
+    private readonly InputAction m_Basic_Left;
+    private readonly InputAction m_Basic_Right;
     public struct BasicActions
     {
         private @CapybaraInputActions m_Wrapper;
         public BasicActions(@CapybaraInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Basic_Move;
         public InputAction @Fart => m_Wrapper.m_Basic_Fart;
+        public InputAction @Left => m_Wrapper.m_Basic_Left;
+        public InputAction @Right => m_Wrapper.m_Basic_Right;
         public InputActionMap Get() { return m_Wrapper.m_Basic; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -200,22 +179,28 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_BasicActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_BasicActionsCallbackInterfaces.Add(instance);
-            @Move.started += instance.OnMove;
-            @Move.performed += instance.OnMove;
-            @Move.canceled += instance.OnMove;
             @Fart.started += instance.OnFart;
             @Fart.performed += instance.OnFart;
             @Fart.canceled += instance.OnFart;
+            @Left.started += instance.OnLeft;
+            @Left.performed += instance.OnLeft;
+            @Left.canceled += instance.OnLeft;
+            @Right.started += instance.OnRight;
+            @Right.performed += instance.OnRight;
+            @Right.canceled += instance.OnRight;
         }
 
         private void UnregisterCallbacks(IBasicActions instance)
         {
-            @Move.started -= instance.OnMove;
-            @Move.performed -= instance.OnMove;
-            @Move.canceled -= instance.OnMove;
             @Fart.started -= instance.OnFart;
             @Fart.performed -= instance.OnFart;
             @Fart.canceled -= instance.OnFart;
+            @Left.started -= instance.OnLeft;
+            @Left.performed -= instance.OnLeft;
+            @Left.canceled -= instance.OnLeft;
+            @Right.started -= instance.OnRight;
+            @Right.performed -= instance.OnRight;
+            @Right.canceled -= instance.OnRight;
         }
 
         public void RemoveCallbacks(IBasicActions instance)
@@ -235,7 +220,8 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
     public BasicActions @Basic => new BasicActions(this);
     public interface IBasicActions
     {
-        void OnMove(InputAction.CallbackContext context);
         void OnFart(InputAction.CallbackContext context);
+        void OnLeft(InputAction.CallbackContext context);
+        void OnRight(InputAction.CallbackContext context);
     }
 }

@@ -412,19 +412,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 150762676437780831, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.013056917
       objectReference: {fileID: 0}
     - target: {fileID: 150762676437780831, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 150762676437780831, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 150762676437780831, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.99991477
       objectReference: {fileID: 0}
     - target: {fileID: 150762676437780831, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -436,7 +436,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 150762676437780831, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 178.504
       objectReference: {fileID: 0}
     - target: {fileID: 5542726772536833866, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
       propertyPath: fartForce
