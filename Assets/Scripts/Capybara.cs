@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
@@ -23,6 +24,8 @@ public class Capybara : MonoBehaviour
     private bool isFacingLeft = true;
     private bool isRolling = false;
     private IInteractible currentInteractibleObject;
+    private Queue<FartEvent> fartEventQueue = new Queue<FartEvent>();
+    private FartEvent playerFartEvent;
 
     private void Awake()
     {
@@ -73,6 +76,15 @@ public class Capybara : MonoBehaviour
         else
         {
             transform.localScale = new Vector3(-1, 1, 1);
+        }
+
+        if (playerFartEvent != null)
+        {
+            Fart(playerFartEvent);
+        }
+        else if (fartEventQueue.Count > 0)
+        {
+            Fart(fartEventQueue.Dequeue());
         }
     }
 
@@ -183,5 +195,15 @@ public class Capybara : MonoBehaviour
     public void OnInteract()
     {
         currentInteractibleObject?.Interact();
+    }
+
+    public void EnqueueFartEvent(float randomFartForce, float randomDisturbanceAngle)
+    {
+        fartEventQueue.Enqueue(new FartEvent(randomFartForce, randomDisturbanceAngle));
+    }
+
+    public void Fart(FartEvent evt)
+    {
+        rb.AddForceAtPosition((isFacingLeft ? -1 : 1) * evt.Force * (Quaternion.AngleAxis(evt.Angle, Vector3.back) * idleFartSpawnPoint.right), fartSpawnPoint.position);
     }
 }

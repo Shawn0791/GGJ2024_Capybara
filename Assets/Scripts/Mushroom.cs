@@ -47,7 +47,6 @@ public class Mushroom : MonoBehaviour, IMountable
         {
             MushroomMovement();
         }
-        Debug.Log(rb2d.velocity);
     }
 
     public void Interact()
