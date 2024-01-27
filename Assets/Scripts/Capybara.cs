@@ -27,6 +27,7 @@ public class Capybara : Singleton<Capybara>
     public LayerMask groundLayer;
     private LastPressedKey lastPressedKey = LastPressedKey.None;
     private bool isFacingLeft = true;
+    private bool isRolling = false;
 
     protected override void Awake()
     {
@@ -53,17 +54,15 @@ public class Capybara : Singleton<Capybara>
     void Update()
     {
         GroundDetection();
-        if (!animator.GetBool("isRolling"))
+        if (!isRolling)
         {
             if (lastPressedKey == LastPressedKey.Left)
             {
-                transform.localScale = new Vector3(1, 1, 1);
                 isFacingLeft = true;
                 rb.velocity = new Vector2(-moveSpeed, 0);
             }
             else if (lastPressedKey == LastPressedKey.Right)
             {
-                transform.localScale = new Vector3(-1, 1, 1);
                 isFacingLeft = false;
                 rb.velocity = new Vector2(moveSpeed, 0);
             }
@@ -71,27 +70,14 @@ public class Capybara : Singleton<Capybara>
             {
                 rb.velocity = Vector2.zero;
             }
-
-            if (isFacingLeft)
-            {
-                transform.localScale = new Vector3(1, 1, 1);
-            }
-            else
-            {
-                transform.localScale = new Vector3(-1, 1, 1);
-            }
+        }
+        if (isFacingLeft)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
         }
         else
         {
-            if (!isFacingLeft)
-            {
-                transform.localScale = new Vector3(1, 1, 1);
-            }
-            else
-            {
-                transform.localScale = new Vector3(-1, 1, 1);
-            }
-
+            transform.localScale = new Vector3(-1, 1, 1);
         }
     }
 
@@ -142,10 +128,11 @@ public class Capybara : Singleton<Capybara>
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, raycastDistance, groundLayer);
         if (hit.collider != null)
         {
-            if (rb.velocity.magnitude < velocityThreshold && animator.GetBool("isRolling"))
+            if (rb.velocity.magnitude < velocityThreshold && isRolling)
             {
                 Debug.DrawLine(transform.position, hit.point, Color.red);
-                animator.SetBool("isRolling", false);
+                animator.SetTrigger("stopRolling");
+                isRolling = false;
                 boxCollider2D.enabled = true;
                 circleCollider2D.enabled = false;
                 transform.rotation = Quaternion.identity;
@@ -155,8 +142,12 @@ public class Capybara : Singleton<Capybara>
         }
         else
         {
-            Debug.DrawLine(transform.position, transform.position + new Vector3(0, -raycastDistance, 0), Color.green) ;
-            animator.SetBool("isRolling", true);
+            Debug.DrawLine(transform.position, transform.position + new Vector3(0, -raycastDistance, 0), Color.green);
+            if (!isRolling)
+            {
+                animator.SetTrigger("startRolling");
+            }
+            isRolling = true;
             boxCollider2D.enabled = false;
             circleCollider2D.enabled = true;
         }
