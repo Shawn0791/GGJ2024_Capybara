@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 5848884392202992902}
   - component: {fileID: 1300287969159067639}
   - component: {fileID: 4473164140371770432}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Capybara
   m_TagString: Untagged
   m_Icon: {fileID: 0}

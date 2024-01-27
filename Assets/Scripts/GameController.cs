@@ -12,7 +12,7 @@ public class GameController : Singleton<GameController>
     [SerializeField] private float shortTimeBetweenFartsChance = 0.1f;
     [SerializeField] private float minimumFartForce = 1f;
     [SerializeField] private float maximumFartForce = 10f;
-    [SerializeField] private float minimumDisturbanceAngle = 0f;
+    [SerializeField] private float minimumDisturbanceAngle = -10f;
     [SerializeField] private float maximumDisturbanceAngle = 10f;
     private DateTime lastFartTime;
     private DateTime nextFartTime;

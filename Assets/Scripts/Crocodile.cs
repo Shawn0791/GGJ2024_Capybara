@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
 
-public class Mushroom : MonoBehaviour, IMountable
+public class Crocodile : MonoBehaviour, IMountable
 {
     private Animator animator;
     private Rigidbody2D rb2d;
@@ -14,14 +12,14 @@ public class Mushroom : MonoBehaviour, IMountable
     private bool isRiding;
 
     public float moveSpeed = 5f;
-    public float jumpForce = 10f;
     public Transform groundCheck;
     public LayerMask groundLayer;
     private bool isGrounded;
-    private bool allowInteraction;
     private MountInputActions mountInputActions;
+    private bool allowInteraction;
     private LastPressedKey lastPressedKey;
     private bool isFacingLeft = true;
+
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -45,47 +43,14 @@ public class Mushroom : MonoBehaviour, IMountable
     {
         if (isRiding)
         {
-            MushroomMovement();
+            CrocodileMovement();
         }
     }
-
-    public void Interact()
-    {
-        if (allowInteraction)
-        {
-            player.SetCurrentMountableObject(this);
-            //Start riding
-            player.ReparentSelfOnMount(ridePoint);
-            //Capybara stop input
-            player.DisableSelfOnMount();
-            mountInputActions.Enable();
-            //Mushroom movement active
-            boxCollider2D.isTrigger = false;
-            rb2d.simulated = true;
-            isRiding = true;
-            rb2d.bodyType = RigidbodyType2D.Dynamic;
-            animator.enabled = false;
-        }
-    }
-
-    public void Dismount()
-    {
-        mountInputActions.Disable();
-        player.EnableSelfOnMount();
-        player.ReparentSelfOnMount(null);
-        player.SetCurrentMountableObject(null);
-        boxCollider2D.isTrigger = true;
-        rb2d.simulated = false;
-        isRiding = false;
-        rb2d.bodyType = RigidbodyType2D.Static;
-        animator.enabled = true;
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("ViewPort"))
         {
-            animator.SetBool("interactable", true);
+            animator.SetBool("isSleeping", false);
             if (player == null)
             {
                 player = collision.transform.parent.GetComponent<Capybara>();
@@ -94,12 +59,11 @@ public class Mushroom : MonoBehaviour, IMountable
         }
     }
 
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("ViewPort"))
         {
-            animator.SetBool("interactable", false);
+            animator.SetBool("isSleeping", true);
             player.SetCurrentInteractibleObject(null);
             player = null;
         }
@@ -117,7 +81,7 @@ public class Mushroom : MonoBehaviour, IMountable
         }
     }
 
-    private void MushroomMovement()
+    private void CrocodileMovement()
     {
         // Ground Decetion
         isGrounded = Physics2D.Raycast(groundCheck.position, Vector2.down, 0.1f, groundLayer);
@@ -147,11 +111,8 @@ public class Mushroom : MonoBehaviour, IMountable
             transform.localScale = new Vector3(-1, 1, 1);
         }
 
-        // Jump
-        if (isGrounded && mountInputActions.Basic.Jump.IsPressed())
-        {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
-        }
+        //Attack
+
     }
 
     public void OnLeftPressed()
@@ -182,5 +143,33 @@ public class Mushroom : MonoBehaviour, IMountable
         }
 
         lastPressedKey = LastPressedKey.None;
+    }
+
+    public void Interact()
+    {
+        if (allowInteraction)
+        {
+            //Start riding
+            player.SetCurrentInteractibleObject(this);
+            player.ReparentSelfOnMount(ridePoint);
+            //Capybara stop input
+            player.DisableSelfOnMount();
+            mountInputActions.Enable();
+            //Crocodile movement active
+            boxCollider2D.isTrigger = false;
+            rb2d.simulated = true;
+            isRiding = true;
+        }
+    }
+
+    public void Dismount()
+    {
+        mountInputActions.Disable();
+        player.EnableSelfOnMount();
+        player.ReparentSelfOnMount(null);
+        player.SetCurrentInteractibleObject(null);
+        boxCollider2D.isTrigger = true;
+        rb2d.simulated = false;
+        isRiding = false;
     }
 }
