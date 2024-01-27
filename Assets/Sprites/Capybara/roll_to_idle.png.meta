@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8e36f9f97da937241b3463ced90ba06d
+guid: f32e9de01f10f084b9f684915ee173b2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,64 +123,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: capybara-Sheet_0
+      name: walkORidle_to_roll_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5727803, y: 0.54852}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33c96af724df94d439f5c9bc9486aeaf
-      internalID: -1066814445
+      spriteID: b4ca9c9f3170c224996f794fe6868b42
+      internalID: -2131796641
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: capybara-Sheet_1
+      name: walkORidle_to_roll_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5776324, y: 0.5460942}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6eaaa930cb14f7340ba1ab23aacdc878
-      internalID: 349182776
+      spriteID: 145c24e96817da44481f7707e9edc2ed
+      internalID: -1068502703
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: capybara-Sheet_2
+      name: walkORidle_to_roll_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5679283, y: 0.5533721}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fefe648652c42c7438f6e552d42ba433
-      internalID: -915618780
+      spriteID: d649a99ea519eae499ee1ccd5091d2e0
+      internalID: 2141771859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walkORidle_to_roll_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ff3e4c1f2967c448bf402811c4407fe
+      internalID: 1710160179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walkORidle_to_roll_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3125a91db0b09ae449454cc01ef18701
+      internalID: -1258198759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walkORidle_to_roll_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e646cbfe19d92d74dbe20036690fe690
+      internalID: -651271752
       vertices: []
       indices: 
       edges: []
@@ -196,9 +259,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      capybara-Sheet_0: -1066814445
-      capybara-Sheet_1: 349182776
-      capybara-Sheet_2: -915618780
+      walkORidle_to_roll_0: -2131796641
+      walkORidle_to_roll_1: -1068502703
+      walkORidle_to_roll_2: 2141771859
+      walkORidle_to_roll_3: 1710160179
+      walkORidle_to_roll_4: -1258198759
+      walkORidle_to_roll_5: -651271752
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
