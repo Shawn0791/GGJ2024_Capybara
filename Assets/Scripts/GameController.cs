@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameController : Singleton<GameController>
@@ -35,15 +36,7 @@ public class GameController : Singleton<GameController>
                 UnityEngine.Random.Range(minimumFartForce, maximumFartForce),
                 UnityEngine.Random.Range(minimumDisturbanceAngle, maximumDisturbanceAngle));
             Debug.Log("Enqueued standard fart event");
-        }
-        else if (now > lastFartTime.AddSeconds(shortTimeBetweenFarts) && UnityEngine.Random.value < shortTimeBetweenFartsChance)
-        {
-            player.EnqueueFartEvent(
-                UnityEngine.Random.Range(minimumFartForce, maximumFartForce) / 2,
-                UnityEngine.Random.Range(minimumDisturbanceAngle, maximumDisturbanceAngle) / 2);
-            lastFartTime = now;
-            UpdateNextFartTime();
-            Debug.Log("Enqueued short fart event");
+            StartCoroutine(EnqueueSecondFart());
         }
     }
 
@@ -51,5 +44,20 @@ public class GameController : Singleton<GameController>
     {
         float nextDelta = UnityEngine.Random.Range(minimumTimeBetweenFarts, maximumTimeBetweenFarts);
         nextFartTime = lastFartTime.AddSeconds(nextDelta);
+    }
+
+    private IEnumerator EnqueueSecondFart()
+    {
+        yield return new WaitForSeconds(shortTimeBetweenFarts);
+        DateTime now = DateTime.Now;
+        if (UnityEngine.Random.value < shortTimeBetweenFartsChance)
+        {
+            player.EnqueueFartEvent(
+                UnityEngine.Random.Range(minimumFartForce, maximumFartForce) / 1.5f,
+                UnityEngine.Random.Range(minimumDisturbanceAngle, maximumDisturbanceAngle) / 1.5f);
+            lastFartTime = now;
+            UpdateNextFartTime();
+            Debug.Log("Enqueued short fart event");
+        }
     }
 }
