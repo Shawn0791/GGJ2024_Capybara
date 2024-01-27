@@ -242,10 +242,10 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 0.4
+  m_AngularDrag: 0.8
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 7c4bc6275225fa847ad03a6a90a0fcc1, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fartSpawnPoint: {fileID: 932957334439616819}
   idleFartSpawnPoint: {fileID: 1167667396855545723}
-  fartForce: 80
+  fartForce: 150
   defaultSprite: {fileID: -1066814445, guid: 8e36f9f97da937241b3463ced90ba06d, type: 3}
   rollingSprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   raycastOrigin: {fileID: 8114002260918741073}
@@ -304,7 +304,27 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: be1dd0de09675fa44b9168ce0959b6ec, type: 3}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+    m_ActionId: 35d28390-5c48-4e30-a6e3-d502a6f7ee63
+    m_ActionName: Basic/Move[/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e65bb070-d1dc-4587-942c-7b72f2e588d9
+    m_ActionName: Basic/Fart[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Basic

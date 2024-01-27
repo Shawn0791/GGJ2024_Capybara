@@ -16,8 +16,6 @@ public class Capybara : Singleton<Capybara>
     [SerializeField] private Transform idleFartSpawnPoint;
     [SerializeField] private float fartForce = 100f;
     [SerializeField] private Sprite defaultSprite;
-    [SerializeField] private Sprite rollingSprite;
-    [SerializeField] private Transform raycastOrigin;
     [SerializeField] private float raycastDistance = 1.0f;
     [SerializeField] private float velocityThreshold = 5f;
     [SerializeField] private float moveSpeed = 5f;
@@ -28,12 +26,8 @@ public class Capybara : Singleton<Capybara>
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     public LayerMask groundLayer;
-    private bool isGround = false;
-    private Vector2 baseInputVelocity = Vector2.zero;
-    private Vector2 inputVelocityToApply = Vector2.zero;
-    private bool isAdditionalForceApplied = false;
     private LastPressedKey lastPressedKey = LastPressedKey.None;
-    private bool canPressKey = true;
+    private bool isFacingLeft = true;
 
     protected override void Awake()
     {
@@ -65,18 +59,41 @@ public class Capybara : Singleton<Capybara>
         {
             if (lastPressedKey == LastPressedKey.Left)
             {
-                spriteRenderer.flipX = false;
+                transform.localScale = new Vector3(1, 1, 1);
+                isFacingLeft = true;
                 rb.velocity = new Vector2(-moveSpeed, 0);
             }
             else if (lastPressedKey == LastPressedKey.Right)
             {
-                spriteRenderer.flipX = true;
+                transform.localScale = new Vector3(-1, 1, 1);
+                isFacingLeft = false;
                 rb.velocity = new Vector2(moveSpeed, 0);
             }
             else
             {
                 rb.velocity = Vector2.zero;
             }
+
+            if (isFacingLeft)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+        }
+        else
+        {
+            if (!isFacingLeft)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+
         }
     }
 
@@ -118,7 +135,8 @@ public class Capybara : Singleton<Capybara>
     // TODO: delete this, only here for testing
     public void OnFart()
     {
-        rb.AddForceAtPosition(-idleFartSpawnPoint.right * fartForce, fartSpawnPoint.position);
+        Debug.Log($"idleFartSpawnPoint {idleFartSpawnPoint.right}, fartSpawnPoint {fartSpawnPoint.position}");
+        rb.AddForceAtPosition((isFacingLeft ? -1 : 1) * fartForce * idleFartSpawnPoint.right, fartSpawnPoint.position);
     }
 
     private void GroundDetection()
@@ -126,7 +144,6 @@ public class Capybara : Singleton<Capybara>
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, raycastDistance, groundLayer);
         if (hit.collider != null)
         {
-            isGround = true;
             if (rb.velocity.magnitude < velocityThreshold && animator.GetBool("isRolling"))
             {
                 Debug.DrawLine(transform.position, hit.point, Color.red);
@@ -141,7 +158,6 @@ public class Capybara : Singleton<Capybara>
         else
         {
             Debug.DrawLine(transform.position, transform.position + new Vector3(0, -raycastDistance, 0), Color.green) ;
-            isGround = false;
             animator.SetBool("isRolling", true);
             boxCollider2D.enabled = false;
             circleCollider2D.enabled = true;
