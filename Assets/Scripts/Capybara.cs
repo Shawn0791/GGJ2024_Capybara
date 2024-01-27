@@ -66,12 +66,12 @@ public class Capybara : Singleton<Capybara>
     private void GroundDetection()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, raycastDistance, groundLayer);
-
         if (hit.collider != null)
         {
             isGround = true;
             if (rb.velocity.magnitude < velocityThreshold)
             {
+                Debug.DrawLine(transform.position, hit.point, Color.red);
                 animator.SetBool("isRolling", false);
                 boxCollider2D.enabled = true;
                 circleCollider2D.enabled = false;
@@ -82,6 +82,7 @@ public class Capybara : Singleton<Capybara>
         }
         else
         {
+            Debug.DrawLine(transform.position, transform.position + new Vector3(0, -raycastDistance, 0), Color.green) ;
             isGround = false;
             animator.SetBool("isRolling", true);
             boxCollider2D.enabled = false;
