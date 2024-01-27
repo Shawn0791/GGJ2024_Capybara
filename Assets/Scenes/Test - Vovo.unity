@@ -384,8 +384,8 @@ Transform:
   m_GameObject: {fileID: 788691620}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3699, y: -0.8967, z: 0}
-  m_LocalScale: {x: 8.719897, y: 1.0365423, z: 1}
+  m_LocalPosition: {x: 1.9, y: -1.7, z: 0}
+  m_LocalScale: {x: 131.89513, y: 2.14793, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -437,6 +437,50 @@ PrefabInstance:
     - target: {fileID: 150762676437780831, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5542726772536833866, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
+      propertyPath: fartForce
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848884392202992902, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
+      propertyPath: m_NotificationBehavior
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848884392202992902, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848884392202992902, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_ActionId
+      value: 35d28390-5c48-4e30-a6e3-d502a6f7ee63
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848884392202992902, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_ActionId
+      value: e65bb070-d1dc-4587-942c-7b72f2e588d9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848884392202992902, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_ActionName
+      value: Basic/Move[/Keyboard/leftArrow,/Keyboard/rightArrow]
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848884392202992902, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_ActionName
+      value: Basic/Fart[/Keyboard/space]
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848884392202992902, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848884392202992902, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848884392202992902, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11500000, guid: be1dd0de09675fa44b9168ce0959b6ec, type: 3}
+    - target: {fileID: 5848884392202992902, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8401400520260276864, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
       propertyPath: m_Name

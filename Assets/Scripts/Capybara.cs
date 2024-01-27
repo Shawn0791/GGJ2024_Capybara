@@ -11,6 +11,10 @@ public class Capybara : Singleton<Capybara>
     [SerializeField] private float fartForce = 100f;
     [SerializeField] private Sprite defaultSprite;
     [SerializeField] private Sprite rollingSprite;
+    [SerializeField] private Transform raycastOrigin;
+    [SerializeField] private float raycastDistance = 1.0f;
+    [SerializeField] private float velocityThreshold = 5f;
+    [SerializeField] private float moveSpeed = 5f;
     private Rigidbody2D rb;
     private CapybaraInputActions inputActions;
     private BoxCollider2D boxCollider2D;
@@ -18,8 +22,8 @@ public class Capybara : Singleton<Capybara>
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     public LayerMask groundLayer;
-    public float raycastDistance = 1.0f;
     private bool isGround = false;
+    private Vector2 moveInput = Vector2.zero;
 
     protected override void Awake()
     {
@@ -37,12 +41,20 @@ public class Capybara : Singleton<Capybara>
     private void Start()
     {
         inputActions.Basic.Fart.performed += ctx => OnFart();
+        inputActions.Basic.Move.performed += ctx => OnMove(ctx);
     }
 
     // Update is called once per frame
     void Update()
     {
         GroundDetection();
+        rb.velocity += new Vector2(moveInput.x * moveSpeed, 0f);
+    }
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
+        animator.SetBool("isWalking", true);
     }
 
     // TODO: delete this, only here for testing
@@ -58,10 +70,22 @@ public class Capybara : Singleton<Capybara>
         if (hit.collider != null)
         {
             isGround = true;
+            if (rb.velocity.magnitude < velocityThreshold)
+            {
+                animator.SetBool("isRolling", false);
+                boxCollider2D.enabled = true;
+                circleCollider2D.enabled = false;
+                transform.rotation = Quaternion.identity;
+                rb.velocity = Vector2.zero;
+                rb.angularVelocity = 0f;
+            }
         }
         else
         {
             isGround = false;
+            animator.SetBool("isRolling", true);
+            boxCollider2D.enabled = false;
+            circleCollider2D.enabled = true;
         }
     }
 }
