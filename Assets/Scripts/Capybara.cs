@@ -2,16 +2,10 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
-public class Capybara : Singleton<Capybara>
+public class Capybara : MonoBehaviour
 {
-    enum LastPressedKey
-    {
-        None,
-        Left,
-        Right
-    }
-
     [SerializeField] private Transform fartSpawnPoint;
     [SerializeField] private Transform idleFartSpawnPoint;
     [SerializeField] private float fartForce = 100f;
@@ -28,10 +22,10 @@ public class Capybara : Singleton<Capybara>
     private LastPressedKey lastPressedKey = LastPressedKey.None;
     private bool isFacingLeft = true;
     private bool isRolling = false;
+    private IInteractible currentInteractibleObject;
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
         inputActions = new CapybaraInputActions();
         inputActions.Enable();
         rb = GetComponent<Rigidbody2D>();
@@ -48,6 +42,7 @@ public class Capybara : Singleton<Capybara>
         inputActions.Basic.Left.canceled += ctx => OnLeftReleased(ctx);
         inputActions.Basic.Right.started += ctx => OnRightPressed(ctx);
         inputActions.Basic.Right.canceled += ctx => OnRightReleased(ctx);
+        inputActions.Basic.Interact.started += ctx => OnInteract();
     }
 
     // Update is called once per frame
@@ -59,16 +54,16 @@ public class Capybara : Singleton<Capybara>
             if (lastPressedKey == LastPressedKey.Left)
             {
                 isFacingLeft = true;
-                rb.velocity = new Vector2(-moveSpeed, 0);
+                rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
             }
             else if (lastPressedKey == LastPressedKey.Right)
             {
                 isFacingLeft = false;
-                rb.velocity = new Vector2(moveSpeed, 0);
+                rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
             }
             else
             {
-                rb.velocity = Vector2.zero;
+                rb.velocity = new Vector2(0, rb.velocity.y);
             }
         }
         if (isFacingLeft)
@@ -83,7 +78,6 @@ public class Capybara : Singleton<Capybara>
 
     private void OnLeftPressed(InputAction.CallbackContext context)
     {
-
         lastPressedKey = LastPressedKey.Left;
         animator.SetBool("isWalking", true);
     }
@@ -151,5 +145,43 @@ public class Capybara : Singleton<Capybara>
             boxCollider2D.enabled = false;
             circleCollider2D.enabled = true;
         }
+    }
+
+    public void SetCurrentInteractibleObject(IInteractible interactible)
+    {
+        currentInteractibleObject = interactible;
+    }
+
+    public void SetCurrentMountableObject(IMountable mountable)
+    {
+        currentInteractibleObject = null;
+    }
+
+    public void ReparentSelfOnMount(Transform newParentTransform)
+    {
+        transform.SetParent(newParentTransform);
+        transform.position = newParentTransform.position;
+    }
+
+    public void DisableSelfOnMount()
+    {
+        rb.simulated = false;
+        enabled = false;
+        boxCollider2D.enabled = false;
+        circleCollider2D.enabled = false;
+        inputActions.Disable();
+    }
+
+    public void EnableSelfOnMount()
+    {
+        rb.simulated = true;
+        enabled = true;
+        boxCollider2D.enabled = true;
+        inputActions.Enable();
+    }
+
+    public void OnInteract()
+    {
+        currentInteractibleObject?.Interact();
     }
 }

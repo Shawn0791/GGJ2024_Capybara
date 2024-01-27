@@ -1,19 +1,10 @@
 {
-    "name": "CapybaraInputActions",
+    "name": "MountInputActions",
     "maps": [
         {
             "name": "Basic",
             "id": "b64489e5-bdc1-42f0-a09e-6d0c7dcad465",
             "actions": [
-                {
-                    "name": "Fart",
-                    "type": "Button",
-                    "id": "e65bb070-d1dc-4587-942c-7b72f2e588d9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
                 {
                     "name": "Left",
                     "type": "Button",
@@ -33,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Interact",
+                    "name": "Dismount",
                     "type": "Button",
                     "id": "322d0df1-6ce4-4c1d-a4fa-98f911f68e5d",
                     "expectedControlType": "Button",
@@ -44,7 +35,7 @@
                 {
                     "name": "Jump",
                     "type": "Button",
-                    "id": "b13e74c7-87b1-46a9-8fea-34aaa12923b3",
+                    "id": "6b675533-7670-4b65-9baf-88b09565579a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -52,17 +43,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "658a5c2b-1d0b-49b1-9bfa-baaf3c7ba176",
-                    "path": "<Keyboard>/z",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Fart",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "7a830481-79b3-410e-be44-68751b0391b5",
@@ -92,13 +72,13 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
+                    "action": "Dismount",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "6da0b84b-8050-40a3-8865-d12a7f0eaeba",
+                    "id": "20723f24-72f8-45dc-aebf-335ddcc48707",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",

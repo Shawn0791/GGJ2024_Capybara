@@ -75,7 +75,8 @@ GameObject:
   - component: {fileID: 1489130415643492219}
   - component: {fileID: 4660676739081421173}
   - component: {fileID: 4797308093340781125}
-  - component: {fileID: 2150366951467650559}
+  - component: {fileID: 1032302171833529912}
+  - component: {fileID: 8946686372874308185}
   m_Layer: 0
   m_Name: Mushroom_interactable
   m_TagString: Untagged
@@ -245,7 +246,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2150366951467650559
+--- !u!114 &1032302171833529912
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -254,7 +255,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9217465835413462415}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 850cd032a875933428ac9ff78b94985b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e7d903a05f67c44bb068fc4ada8edfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ridePoint: {fileID: 5351821881642321639}
@@ -264,3 +265,33 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 65536
+--- !u!114 &8946686372874308185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9217465835413462415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 369ef06a206528646998a619e1e1db46, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Basic
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}

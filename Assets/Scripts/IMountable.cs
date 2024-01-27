@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.Controls;
 
-public interface IMountable
+public interface IMountable : IInteractible
 {
-    void Mount();
     void Dismount();
+    void OnLeftPressed();
+    void OnLeftReleased();
+    void OnRightPressed();
+    void OnRightReleased();
 }
