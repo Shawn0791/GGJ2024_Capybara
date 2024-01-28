@@ -82,6 +82,7 @@ public class GameController : Singleton<GameController>
         if (satiation > satiationMax)
             satiation = satiationMax;
     }
+
     public void RestlessnessAdd(float amount)
     {
         restlessness += amount;

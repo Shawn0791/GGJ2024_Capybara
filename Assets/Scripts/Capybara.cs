@@ -14,7 +14,7 @@ public class Capybara : MonoBehaviour, IControllable
     [SerializeField] private float raycastDistance = 1.0f;
     [SerializeField] private float velocityThreshold = 5f;
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float jumpForce = 10f;
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider2D;
     private CircleCollider2D circleCollider2D;
@@ -49,9 +49,9 @@ public class Capybara : MonoBehaviour, IControllable
     void Update()
     {
         GroundDetection();
+        Vector2 movement = new Vector2(InputController.Instance.Movement.x, InputController.Instance.IsInWater ? InputController.Instance.Movement.y : 0);
         if (!isRolling)
         {
-            Vector2 movement = new Vector2(InputController.Instance.Movement.x, InputController.Instance.IsInWater ? InputController.Instance.Movement.y : 0);
             if (movement.x < 0)
             {
                 IsFacingLeft = true;
@@ -66,6 +66,11 @@ public class Capybara : MonoBehaviour, IControllable
             {
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }
+
+        }
+        if (InputController.Instance.IsInWater)
+        {
+            rb.velocity = movement.normalized * moveSpeed;
         }
         if (IsFacingLeft)
         {
@@ -84,10 +89,11 @@ public class Capybara : MonoBehaviour, IControllable
         {
             Fart(fartEventQueue.Dequeue());
         }
-        else if (isGrounded && InputController.Instance.IsJumping)
+        else if ((isGrounded || InputController.Instance.IsInWater) && InputController.Instance.IsJumping)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
+        Debug.Log($"isInWater {InputController.Instance.IsInWater}");
     }
 
     // TODO: delete this, only here for testing

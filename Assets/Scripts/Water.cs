@@ -10,16 +10,17 @@ public class Water : MonoBehaviour
         IControllable controllable = collision.gameObject.GetComponent<IControllable>();
         if (controllable != null)
         {
-            if (controllable is Capybara || controllable is Turtle)
+            if (InputController.Instance.GetCurrentControllable() == controllable)
             {
                 InputController.Instance.IsInWater = true;
             }
-            else
+
+            if (!(controllable is Capybara) && !(controllable is Turtle))
             {
                 controllable.OnInteract();
                 Destroy(collision.gameObject);
             }
-
+            Debug.Log($"isInWater {InputController.Instance.IsInWater}");
         }
     }
 
@@ -28,7 +29,11 @@ public class Water : MonoBehaviour
         IControllable controllable = collision.gameObject.GetComponent<IControllable>();
         if (controllable != null)
         {
-            InputController.Instance.IsInWater = false;
+            if (InputController.Instance.GetCurrentControllable() == controllable)
+            {
+                InputController.Instance.IsInWater = false;
+            }
+            Debug.Log($"isInWater {InputController.Instance.IsInWater}");
         }
     }
 }

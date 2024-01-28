@@ -60,9 +60,12 @@ public class Mushroom : MonoBehaviour, IControllable, IInteractible
 
     public void Dismount()
     {
-        player.EnableSelfOnMount();
-        player.ReparentSelfOnMount(null);
-        player.SetCurrentMountableObject(null);
+        if (player)
+        {
+            player.EnableSelfOnMount();
+            player.ReparentSelfOnMount(null);
+            player.SetCurrentMountableObject(null);
+        }
         boxCollider2D.isTrigger = false;
         rb2d.simulated = true;
         rb2d.bodyType = RigidbodyType2D.Static;

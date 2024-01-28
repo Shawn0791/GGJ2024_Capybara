@@ -106,9 +106,12 @@ public class Pelican : MonoBehaviour, IInteractible, IControllable
 
     public void Dismount()
     {
-        player.EnableSelfOnMount();
-        player.ReparentSelfOnMount(null);
-        player.SetCurrentMountableObject(null);
+        if (player)
+        {
+            player.EnableSelfOnMount();
+            player.ReparentSelfOnMount(null);
+            player.SetCurrentMountableObject(null);
+        }
         boxCollider2D.isTrigger = false;
         rb2d.simulated = true;
     }

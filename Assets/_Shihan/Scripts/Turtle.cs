@@ -16,7 +16,6 @@ public class Turtle : MonoBehaviour, IInteractible, IControllable
     public LayerMask groundLayer;
     private bool isGrounded;
     private bool isFacingLeft = true;
-    private bool isInWater = false;
 
     void Awake()
     {
@@ -87,6 +86,7 @@ public class Turtle : MonoBehaviour, IInteractible, IControllable
             animator.SetBool("isWalking", false);
         else
             animator.SetBool("isWalking", true);
+
     }
 
     public void Interact(Capybara capybara)
@@ -100,6 +100,7 @@ public class Turtle : MonoBehaviour, IInteractible, IControllable
         player.ReverseScale();
         //Pelican movement active
         boxCollider2D.isTrigger = false;
+        rb2d.simulated = true;
         isFacingLeft = player.IsFacingLeft;
     }
 
