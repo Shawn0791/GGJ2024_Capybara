@@ -7,6 +7,7 @@ TagManager:
   - ViewPort
   - InteractablePort
   - Interactible
+  - Water
   layers:
   - Default
   - TransparentFX
