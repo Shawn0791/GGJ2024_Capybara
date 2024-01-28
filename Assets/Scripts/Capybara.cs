@@ -30,6 +30,7 @@ public class Capybara : MonoBehaviour, IControllable
     private Queue<FartEvent> fartEventQueue = new();
     private FartEvent playerFartEvent;
     private bool isGrounded = true;
+    private int nextFartClipIdx = 0;
 
     public ParticleSystem fartParticle;
     private void Awake()
@@ -208,7 +209,7 @@ public class Capybara : MonoBehaviour, IControllable
 
         if (!audioSource.isPlaying && fartClips.Count > 0)
         {
-            audioSource.PlayOneShot(fartClips[UnityEngine.Random.Range(0, fartClips.Count)]);
+            audioSource.PlayOneShot(fartClips[nextFartClipIdx++ % fartClips.Count]);
         }
     }
 

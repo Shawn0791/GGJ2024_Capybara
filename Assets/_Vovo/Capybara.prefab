@@ -5277,9 +5277,38 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 5
   bounceClip: {fileID: 8300000, guid: efe439279ac3fa949b67cdf88166254a, type: 3}
+  fartClips:
+  - {fileID: 8300000, guid: f180478308abbe74e88992299c74c960, type: 3}
+  - {fileID: 8300000, guid: 0d18acbe8966dc144b4f8c1725ccd263, type: 3}
+  - {fileID: 8300000, guid: eefb58dc1290ba7408666ea03ec5d0c3, type: 3}
+  - {fileID: 8300000, guid: c4aeb95237efc2543ada8161dc1ef07d, type: 3}
+  - {fileID: 8300000, guid: 3e33df1a298e93447a4e97e6fd0beb6b, type: 3}
+  - {fileID: 8300000, guid: 6f9b4e7472f625f49b8ae80f9776b960, type: 3}
+  - {fileID: 8300000, guid: 9e83a561f631d6740838c60538a5cb2a, type: 3}
+  - {fileID: 8300000, guid: 27ef25872be6a3641bc8a91362e9cac3, type: 3}
+  - {fileID: 8300000, guid: dd20d57a685caea48b8150cadf93909f, type: 3}
+  - {fileID: 8300000, guid: c646e09310dc88d469bfa4b1ace0894e, type: 3}
+  - {fileID: 8300000, guid: 188a119e55f768c49aac906da32d96ed, type: 3}
+  - {fileID: 8300000, guid: d62a7a8739626834c8fa3ff991dd4944, type: 3}
+  - {fileID: 8300000, guid: b97a6d474eb27064d8ed220c09970b75, type: 3}
+  - {fileID: 8300000, guid: 09ec6a9c76cea544683b3365b72b0997, type: 3}
+  - {fileID: 8300000, guid: bbf900b275aaf9a4ead4f454e878c4ff, type: 3}
+  - {fileID: 8300000, guid: 4241501ce68220f468696b2703c25d80, type: 3}
+  - {fileID: 8300000, guid: 6226d40be427fcd4fbef00ad62eb3f30, type: 3}
+  - {fileID: 8300000, guid: 5680cd5f62f8f154bb925b7e17ae77e8, type: 3}
+  - {fileID: 8300000, guid: daaf724da47dfd74d8eb72d1cd6d0f66, type: 3}
+  - {fileID: 8300000, guid: a94378c3725b2244a8c7cc98fe025212, type: 3}
+  - {fileID: 8300000, guid: 73ffb61df5dd7c34b9a6249b5632fe87, type: 3}
+  - {fileID: 8300000, guid: a1329db1291fe3e46ad32fd385a891ba, type: 3}
+  - {fileID: 8300000, guid: e277b81a462b9624fb7ea768b70b02b2, type: 3}
+  - {fileID: 8300000, guid: 9ac6181f87a91cb49b659a0826906b8d, type: 3}
+  - {fileID: 8300000, guid: 97dfa91318d3ccf499508b6aaeb99d1b, type: 3}
+  - {fileID: 8300000, guid: 1de591a93a71f374187761e506903dbe, type: 3}
+  - {fileID: 8300000, guid: 4c081618894fcb44595c46903719e0d1, type: 3}
   groundLayer:
     serializedVersion: 2
     m_Bits: 65536
+  fartParticle: {fileID: 0}
 --- !u!58 &1300287969159067639
 CircleCollider2D:
   m_ObjectHideFlags: 0
