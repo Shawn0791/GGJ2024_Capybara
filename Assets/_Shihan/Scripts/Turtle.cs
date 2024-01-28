@@ -25,7 +25,7 @@ public class Turtle : MonoBehaviour, IInteractible, IControllable
 
     private void Start()
     {
-        InputController.Instance.RegisterControllable(this);
+        InputController.Instance.RegisterControllableActionHandler(this, InputControllerAction.Move, () => {});
     }
 
     // Update is called once per frame
@@ -87,22 +87,6 @@ public class Turtle : MonoBehaviour, IInteractible, IControllable
         {
             transform.localScale = new Vector3(Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
-    }
-
-    public void OnLeftPressed()
-    {
-    }
-
-    public void OnLeftReleased()
-    {
-    }
-
-    public void OnRightPressed()
-    {
-    }
-
-    public void OnRightReleased()
-    {
     }
 
     public void Interact(Capybara capybara)

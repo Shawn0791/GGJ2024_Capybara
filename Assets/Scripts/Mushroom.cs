@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,7 +28,7 @@ public class Mushroom : MonoBehaviour, IControllable, IInteractible
 
     private void Start()
     {
-        InputController.Instance.RegisterControllable(this);
+        InputController.Instance.RegisterControllableActionHandler(this, InputControllerAction.Move, () => {});
     }
 
     // Update is called once per frame
@@ -108,11 +109,11 @@ public class Mushroom : MonoBehaviour, IControllable, IInteractible
 
         if (isFacingLeft)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
         else
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
 
         // Jump
@@ -120,22 +121,6 @@ public class Mushroom : MonoBehaviour, IControllable, IInteractible
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
         }
-    }
-
-    public void OnLeftPressed()
-    {
-    }
-
-    public void OnLeftReleased()
-    {
-    }
-
-    public void OnRightPressed()
-    {
-    }
-
-    public void OnRightReleased()
-    {
     }
 
     public void OnFart()

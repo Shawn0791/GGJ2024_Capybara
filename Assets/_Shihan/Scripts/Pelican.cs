@@ -27,7 +27,7 @@ public class Pelican : MonoBehaviour, IInteractible, IControllable
 
     private void Start()
     {
-        InputController.Instance.RegisterControllable(this);
+        InputController.Instance.RegisterControllableActionHandler(this, InputControllerAction.Move, () => {});
     }
 
     // Update is called once per frame
