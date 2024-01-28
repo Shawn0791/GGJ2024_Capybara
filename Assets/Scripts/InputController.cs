@@ -61,9 +61,11 @@ public class InputController : Singleton<InputController>
             return;
         }
 
-        if (currentControllable != null && inputActionMap.ContainsKey(currentControllable))
+        if (currentControllable != null &&
+            inputActionMap.ContainsKey(currentControllable) &&
+            inputActionMap[currentControllable].ContainsKey(InputControllerAction.Fart))
         {
-            inputActionMap[currentControllable][InputControllerAction.Fart]?.Invoke();
+            inputActionMap[currentControllable][InputControllerAction.Fart].Invoke();
         }
     }
 
@@ -74,9 +76,11 @@ public class InputController : Singleton<InputController>
             return;
         }
 
-        if (currentControllable != null && inputActionMap.ContainsKey(currentControllable))
+        if (currentControllable != null &&
+            inputActionMap.ContainsKey(currentControllable)
+            && inputActionMap[currentControllable].ContainsKey(InputControllerAction.Interact))
         {
-            inputActionMap[currentControllable][InputControllerAction.Interact]?.Invoke();
+            inputActionMap[currentControllable][InputControllerAction.Interact].Invoke();
         }
     }
 
@@ -127,9 +131,11 @@ public class InputController : Singleton<InputController>
         }
 
         Movement = ctx.ReadValue<Vector2>();
-        if (currentControllable != null && inputActionMap.ContainsKey(currentControllable))
+        if (currentControllable != null &&
+            inputActionMap.ContainsKey(currentControllable) &&
+            inputActionMap[currentControllable].ContainsKey(InputControllerAction.Move))
         {
-            inputActionMap[currentControllable][InputControllerAction.Move]?.Invoke();
+            inputActionMap[currentControllable][InputControllerAction.Move].Invoke();
         }
     }
 }

@@ -40,6 +40,8 @@ public class Capybara : MonoBehaviour, IControllable
     private void Start()
     {
         InputController.Instance.RegisterControllableActionHandler(this, InputControllerAction.Move, OnMovement);
+        InputController.Instance.RegisterControllableActionHandler(this, InputControllerAction.Interact, OnInteract);
+        InputController.Instance.RegisterControllableActionHandler(this, InputControllerAction.Fart, OnFart);
         InputController.Instance.SetCurrentControllable(this);
     }
 
@@ -49,12 +51,13 @@ public class Capybara : MonoBehaviour, IControllable
         GroundDetection();
         if (!isRolling)
         {
-            if (InputController.Instance.ActiveDirectionKey == LastPressedKey.Left)
+            Vector2 movement = InputController.Instance.Movement;
+            if (movement.x < 0)
             {
                 IsFacingLeft = true;
                 rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
             }
-            else if (InputController.Instance.ActiveDirectionKey == LastPressedKey.Right)
+            else if (movement.x > 0)
             {
                 IsFacingLeft = false;
                 rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
@@ -176,11 +179,6 @@ public class Capybara : MonoBehaviour, IControllable
         }
     }
 
-    public void OnJump()
-    {
-        // TODO: implement
-    }
-
     public void EnqueueFartEvent(float randomFartForce, float randomDisturbanceAngle)
     {
         fartEventQueue.Enqueue(new FartEvent(randomFartForce, randomDisturbanceAngle));
@@ -204,5 +202,9 @@ public class Capybara : MonoBehaviour, IControllable
     public void OnMovement()
     {
         animator.SetBool("isWalking", InputController.Instance.Movement.x != 0);
+    }
+
+    public void OnJump()
+    {
     }
 }

@@ -92,20 +92,17 @@ public class Mushroom : MonoBehaviour, IControllable, IInteractible
         isGrounded = Physics2D.Raycast(groundCheck.position, Vector2.down, 0.1f, groundLayer);
 
         // Movement
-        if (InputController.Instance.ActiveDirectionKey == LastPressedKey.Left)
+        Vector2 movement = InputController.Instance.Movement;
+        if (movement.x < 0)
         {
             isFacingLeft = true;
-            rb2d.velocity = new Vector2(-moveSpeed, rb2d.velocity.y);
-        }
-        else if (InputController.Instance.ActiveDirectionKey == LastPressedKey.Right)
-        {
-            isFacingLeft = false;
-            rb2d.velocity = new Vector2(moveSpeed, rb2d.velocity.y);
         }
         else
         {
-            rb2d.velocity = new Vector2(0, rb2d.velocity.y);
+            isFacingLeft = false;
         }
+
+        rb2d.velocity = new Vector2(Math.Sign(movement.x) * moveSpeed, rb2d.velocity.y);
 
         if (isFacingLeft)
         {
