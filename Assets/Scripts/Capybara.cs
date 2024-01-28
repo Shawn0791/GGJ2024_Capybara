@@ -27,8 +27,6 @@ public class Capybara : MonoBehaviour, IControllable
 
     private void Awake()
     {
-        InputController.Instance.RegisterControllable(this);
-        InputController.Instance.SetCurrentControllable(this);
         rb = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         circleCollider2D = GetComponent<CircleCollider2D>();
@@ -38,6 +36,8 @@ public class Capybara : MonoBehaviour, IControllable
 
     private void Start()
     {
+        InputController.Instance.RegisterControllable(this);
+        InputController.Instance.SetCurrentControllable(this);
     }
 
     // Update is called once per frame

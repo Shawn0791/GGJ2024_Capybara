@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 6988601671611545414}
   - component: {fileID: 2243906192140909504}
   - component: {fileID: 514059630631561319}
-  m_Layer: 0
+  - component: {fileID: 2223819279881886198}
+  m_Layer: 15
   m_Name: orange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 885731
   m_SortingLayer: 3
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 36f2e344269a88a489aaf1e3f586e6d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ff2834df513e23479a7447cb465fefd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -148,3 +149,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.15
+--- !u!114 &2223819279881886198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057739367242872309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7788bf0cdea1be3429130fbd9ed92f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  satiationIncrease: 10
