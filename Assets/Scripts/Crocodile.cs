@@ -27,6 +27,7 @@ public class Crocodile : MonoBehaviour, IInteractible, IControllable
     private void Start()
     {
         InputController.Instance.RegisterControllableActionHandler(this, InputControllerAction.Move, () => {});
+        InputController.Instance.RegisterControllableActionHandler(this, InputControllerAction.Interact, OnInteract);
     }
 
     // Update is called once per frame
@@ -74,11 +75,11 @@ public class Crocodile : MonoBehaviour, IInteractible, IControllable
 
         if (isFacingLeft)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
         else
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
 
         //Attack
@@ -105,8 +106,8 @@ public class Crocodile : MonoBehaviour, IInteractible, IControllable
         player.EnableSelfOnMount();
         player.ReparentSelfOnMount(null);
         player.SetCurrentMountableObject(null);
-        boxCollider2D.isTrigger = true;
-        rb2d.simulated = false;
+        boxCollider2D.isTrigger = false;
+        rb2d.simulated = true;
     }
 
     public void OnFart()
