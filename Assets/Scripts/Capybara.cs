@@ -27,6 +27,8 @@ public class Capybara : MonoBehaviour, IControllable
     private Queue<FartEvent> fartEventQueue = new();
     private FartEvent playerFartEvent;
     private bool isGrounded = true;
+
+    public ParticleSystem fartParticle;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -192,6 +194,9 @@ public class Capybara : MonoBehaviour, IControllable
     public void Fart(FartEvent evt)
     {
         rb.AddForceAtPosition((IsFacingLeft ? -1 : 1) * evt.Force * (Quaternion.AngleAxis(evt.Angle, Vector3.back) * idleFartSpawnPoint.right), fartSpawnPoint.position);
+        fartParticle.Stop();
+        fartParticle.Clear();
+        fartParticle.Play();
     }
 
     public void ReverseScale()
