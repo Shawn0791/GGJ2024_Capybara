@@ -14,11 +14,13 @@ public class Capybara : MonoBehaviour, IControllable
     [SerializeField] private float velocityThreshold = 5f;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private AudioClip bounceClip;
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider2D;
     private CircleCollider2D circleCollider2D;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    private AudioSource audioSource;
     public LayerMask groundLayer;
     public bool IsFacingLeft { get; set; } = true;
     private bool isRolling = false;
@@ -36,6 +38,7 @@ public class Capybara : MonoBehaviour, IControllable
         circleCollider2D = GetComponent<CircleCollider2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -92,6 +95,10 @@ public class Capybara : MonoBehaviour, IControllable
         }
         else if ((isGrounded || InputController.Instance.IsInWater) && InputController.Instance.IsJumping)
         {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(bounceClip);
+            }
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
         Debug.Log($"isInWater {InputController.Instance.IsInWater}");
