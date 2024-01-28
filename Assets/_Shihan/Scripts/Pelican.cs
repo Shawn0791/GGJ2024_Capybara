@@ -79,7 +79,7 @@ public class Pelican : MonoBehaviour, IInteractible, IControllable
         }
         else
         {
-            transform.localScale = new Vector3(-Math.Abs(transform.localScale.x), 1, 1);
+            transform.localScale = new Vector3(-Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
     }
 
