@@ -51,7 +51,7 @@ public class Capybara : MonoBehaviour, IControllable
         GroundDetection();
         if (!isRolling)
         {
-            Vector2 movement = InputController.Instance.Movement;
+            Vector2 movement = new Vector2(InputController.Instance.Movement.x, InputController.Instance.IsInWater ? InputController.Instance.Movement.y : 0);
             if (movement.x < 0)
             {
                 IsFacingLeft = true;

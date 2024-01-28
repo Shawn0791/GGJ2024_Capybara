@@ -20,6 +20,7 @@ public class InputController : Singleton<InputController>
     public LastPressedKey ActiveDirectionKey {get; set;} = LastPressedKey.None;
     public bool IsJumping {get; set;} = false;
     public bool IsConsuming {get; set;} = false;
+    public bool IsInWater {get; set;} = false;
     public Vector2 Movement {get; set;} = Vector2.zero;
 
     protected override void Awake()

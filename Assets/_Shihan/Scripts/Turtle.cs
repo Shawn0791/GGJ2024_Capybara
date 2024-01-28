@@ -46,10 +46,6 @@ public class Turtle : MonoBehaviour, IInteractible, IControllable
         {
             //animator.SetBool("isSleeping", false);
         }
-        else if (collision.CompareTag("Water"))
-        {
-            isInWater = true;
-        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -57,10 +53,6 @@ public class Turtle : MonoBehaviour, IInteractible, IControllable
         if (collision.CompareTag("ViewPort"))
         {
             // animator.SetBool("isSleeping", true);
-        }
-        else if (collision.CompareTag("Water"))
-        {
-            isInWater = false;
         }
     }
 
@@ -70,7 +62,7 @@ public class Turtle : MonoBehaviour, IInteractible, IControllable
         isGrounded = Physics2D.Raycast(groundCheck.position, Vector2.down, 0.1f, groundLayer);
 
         // Movement
-        Vector2 movement = new Vector2(InputController.Instance.Movement.x, isInWater ? InputController.Instance.Movement.y : 0);
+        Vector2 movement = new Vector2(InputController.Instance.Movement.x, InputController.Instance.IsInWater ? InputController.Instance.Movement.y : 0);
         if (movement.x < 0)
         {
             isFacingLeft = true;
