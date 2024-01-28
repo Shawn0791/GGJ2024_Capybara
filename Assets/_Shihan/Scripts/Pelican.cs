@@ -104,7 +104,11 @@ public class Pelican : MonoBehaviour, IInteractible, IControllable
         boxCollider2D.isTrigger = false;
         rb2d.simulated = true;
         isFacingLeft = player.IsFacingLeft;
-        audioSource.PlayOneShot(pelicanClip);
+
+        if (!audioSource.isPlaying && pelicanClip)
+        {
+            audioSource.PlayOneShot(pelicanClip);
+        }
     }
 
     public void Dismount()

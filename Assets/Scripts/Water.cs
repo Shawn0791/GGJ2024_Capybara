@@ -20,7 +20,7 @@ public class Water : MonoBehaviour
             if (InputController.Instance.GetCurrentControllable() == controllable)
             {
                 InputController.Instance.IsInWater = true;
-                if (controllable is Turtle && !audioSource.isPlaying)
+                if (controllable is Turtle && !audioSource.isPlaying && intoWaterClip)
                 {
                     audioSource.PlayOneShot(intoWaterClip);
                 }
@@ -43,9 +43,9 @@ public class Water : MonoBehaviour
             if (InputController.Instance.GetCurrentControllable() == controllable)
             {
                 InputController.Instance.IsInWater = false;
-                if (controllable is Turtle && !audioSource.isPlaying)
+                if (controllable is Turtle && !audioSource.isPlaying && outOfWaterClip)
                 {
-                    audioSource.PlayOneShot(intoWaterClip);
+                    audioSource.PlayOneShot(outOfWaterClip);
                 }
             }
             Debug.Log($"isInWater {InputController.Instance.IsInWater}");

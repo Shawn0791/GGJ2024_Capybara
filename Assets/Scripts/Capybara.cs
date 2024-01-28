@@ -15,6 +15,7 @@ public class Capybara : MonoBehaviour, IControllable
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private AudioClip bounceClip;
+    [SerializeField] private List<AudioClip> fartClips;
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider2D;
     private CircleCollider2D circleCollider2D;
@@ -95,7 +96,7 @@ public class Capybara : MonoBehaviour, IControllable
         }
         else if ((isGrounded || InputController.Instance.IsInWater) && InputController.Instance.IsJumping)
         {
-            if (!audioSource.isPlaying)
+            if (!audioSource.isPlaying && bounceClip)
             {
                 audioSource.PlayOneShot(bounceClip);
             }
@@ -204,6 +205,11 @@ public class Capybara : MonoBehaviour, IControllable
         fartParticle.Stop();
         fartParticle.Clear();
         fartParticle.Play();
+
+        if (!audioSource.isPlaying && fartClips.Count > 0)
+        {
+            audioSource.PlayOneShot(fartClips[UnityEngine.Random.Range(0, fartClips.Count)]);
+        }
     }
 
     public void ReverseScale()
