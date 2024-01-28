@@ -24,7 +24,7 @@ public class GameController : Singleton<GameController>
     public float satiationReduceSpeed;
     private float restlessness;
     public float restlessnessMax;
-    public float restReduceIncreaseSpeed;
+    public float restReduceSpeed;
     public Slider satiationBar;
     public Slider restlessnessBar;
     protected override void Awake()
@@ -96,7 +96,7 @@ public class GameController : Singleton<GameController>
         satiationBar.value = satiation / satiationMax;
 
         if (restlessness >= 0)
-            restlessness -= restReduceIncreaseSpeed * Time.deltaTime;
+            restlessness -= restReduceSpeed * Time.deltaTime;
         restlessnessBar.value = restlessness / restlessnessMax;
     }
 }

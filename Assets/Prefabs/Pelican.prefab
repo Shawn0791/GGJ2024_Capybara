@@ -311,9 +311,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b88870b1dfd2e41b6a41f0cc3ee47f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ridePoint: {fileID: 3800417187449225316}
+  ridePoint: {fileID: 3870438390040749927}
   moveSpeed: 5
-  groundCheck: {fileID: 3870438390040749927}
+  groundCheck: {fileID: 3800417187449225316}
   groundLayer:
     serializedVersion: 2
     m_Bits: 0

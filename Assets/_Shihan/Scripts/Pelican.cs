@@ -81,6 +81,11 @@ public class Pelican : MonoBehaviour, IInteractible, IControllable
         {
             transform.localScale = new Vector3(-Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
+
+        if (movement.x == 0 && movement.y == 0) 
+            animator.SetBool("isFlying", false);
+        else
+            animator.SetBool("isFlying", true);
     }
 
     public void OnLeftPressed()
