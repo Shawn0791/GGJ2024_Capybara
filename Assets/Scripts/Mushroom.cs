@@ -103,7 +103,7 @@ public class Mushroom : MonoBehaviour, IControllable, IInteractible
         {
             isFacingLeft = true;
         }
-        else
+        else if (movement.x > 0)
         {
             isFacingLeft = false;
         }

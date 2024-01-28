@@ -66,7 +66,7 @@ public class Crocodile : MonoBehaviour, IInteractible, IControllable
         {
             isFacingLeft = true;
         }
-        else
+        else if (movement.x > 0)
         {
             isFacingLeft = false;
         }
