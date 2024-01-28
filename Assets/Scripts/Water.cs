@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Water : MonoBehaviour
 {
+    [SerializeField] AudioClip intoWaterClip;
+    [SerializeField] AudioClip outOfWaterClip;
+    private AudioSource audioSource;
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         IControllable controllable = collision.gameObject.GetComponent<IControllable>();
@@ -12,6 +20,10 @@ public class Water : MonoBehaviour
             if (InputController.Instance.GetCurrentControllable() == controllable)
             {
                 InputController.Instance.IsInWater = true;
+                if (controllable is Turtle && !audioSource.isPlaying)
+                {
+                    audioSource.PlayOneShot(intoWaterClip);
+                }
             }
 
             if (!(controllable is Capybara) && !(controllable is Turtle))
@@ -31,6 +43,10 @@ public class Water : MonoBehaviour
             if (InputController.Instance.GetCurrentControllable() == controllable)
             {
                 InputController.Instance.IsInWater = false;
+                if (controllable is Turtle && !audioSource.isPlaying)
+                {
+                    audioSource.PlayOneShot(intoWaterClip);
+                }
             }
             Debug.Log($"isInWater {InputController.Instance.IsInWater}");
         }

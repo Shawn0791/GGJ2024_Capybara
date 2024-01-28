@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Pelican : MonoBehaviour, IInteractible, IControllable
 {
+    [SerializeField] AudioClip pelicanClip;
     private Animator animator;
     private Rigidbody2D rb2d;
     private BoxCollider2D boxCollider2D;
@@ -16,12 +17,14 @@ public class Pelican : MonoBehaviour, IInteractible, IControllable
     public LayerMask groundLayer;
     private bool isGrounded;
     private bool isFacingLeft = true;
+    private AudioSource audioSource;
 
     void Awake()
     {
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -101,6 +104,7 @@ public class Pelican : MonoBehaviour, IInteractible, IControllable
         boxCollider2D.isTrigger = false;
         rb2d.simulated = true;
         isFacingLeft = player.IsFacingLeft;
+        audioSource.PlayOneShot(pelicanClip);
     }
 
     public void Dismount()
