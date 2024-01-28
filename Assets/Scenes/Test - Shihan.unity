@@ -7259,6 +7259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7db356ae02fb245879815ed794d43e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  intoWaterClip: {fileID: 0}
+  outOfWaterClip: {fileID: 0}
 --- !u!198 &1365632511 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 4187199368118845120, guid: 65492ff9ffe757b40b1d7ae0ab47c303, type: 3}
@@ -7655,6 +7657,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7db356ae02fb245879815ed794d43e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  intoWaterClip: {fileID: 0}
+  outOfWaterClip: {fileID: 0}
 --- !u!1001 &1467031713
 PrefabInstance:
   m_ObjectHideFlags: 0
