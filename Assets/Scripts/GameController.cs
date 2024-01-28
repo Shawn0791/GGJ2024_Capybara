@@ -78,9 +78,11 @@ public class GameController : Singleton<GameController>
 
     public void SatiationAdd(float amount)
     {
-        satiation += amount;
-        if (satiation > satiationMax)
-            satiation = satiationMax;
+        satiation = Mathf.Clamp(satiation + amount, 0, satiationMax);
+        minimumTimeBetweenFarts = Mathf.Lerp(4, 2, satiation / satiationMax);
+        maximumTimeBetweenFarts = Mathf.Lerp(8, 4, satiation / satiationMax);
+        minimumFartForce = Mathf.Lerp(50, 100, satiation / satiationMax);
+        maximumFartForce = Mathf.Lerp(100, 200, satiation / satiationMax);
     }
 
     public void RestlessnessAdd(float amount)
