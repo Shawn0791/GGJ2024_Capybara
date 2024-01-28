@@ -9,6 +9,7 @@ public class Turtle : MonoBehaviour, IInteractible, IControllable
     private BoxCollider2D boxCollider2D;
     private Capybara player;
     public Transform ridePoint;
+    private Animator animator;
 
     public float moveSpeed = 5f;
     public Transform groundCheck;
@@ -21,6 +22,7 @@ public class Turtle : MonoBehaviour, IInteractible, IControllable
     {
         rb2d = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -87,6 +89,11 @@ public class Turtle : MonoBehaviour, IInteractible, IControllable
         {
             transform.localScale = new Vector3(Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
+
+        if (movement.x == 0 && movement.y == 0)
+            animator.SetBool("isWalking", false);
+        else
+            animator.SetBool("isWalking", true);
     }
 
     public void OnLeftPressed()
