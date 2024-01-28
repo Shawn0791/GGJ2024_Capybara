@@ -39,7 +39,7 @@ public class Capybara : MonoBehaviour, IControllable
 
     private void Start()
     {
-        InputController.Instance.RegisterControllable(this);
+        InputController.Instance.RegisterControllableActionHandler(this, InputControllerAction.Move, OnMovement);
         InputController.Instance.SetCurrentControllable(this);
     }
 
@@ -85,26 +85,6 @@ public class Capybara : MonoBehaviour, IControllable
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
-    }
-
-    public void OnLeftPressed()
-    {
-        animator.SetBool("isWalking", true);
-    }
-
-    public void OnRightPressed()
-    {
-        animator.SetBool("isWalking", true);
-    }
-
-    public void OnLeftReleased()
-    {
-        animator.SetBool("isWalking", false);
-    }
-
-    public void OnRightReleased()
-    {
-        animator.SetBool("isWalking", false);
     }
 
     // TODO: delete this, only here for testing
@@ -219,5 +199,10 @@ public class Capybara : MonoBehaviour, IControllable
     public void ResetScale()
     {
         transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+    }
+
+    public void OnMovement()
+    {
+        animator.SetBool("isWalking", InputController.Instance.Movement.x != 0);
     }
 }

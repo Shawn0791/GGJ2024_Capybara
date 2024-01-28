@@ -27,7 +27,7 @@ public class Turtle : MonoBehaviour, IInteractible, IControllable
 
     private void Start()
     {
-        InputController.Instance.RegisterControllable(this);
+        InputController.Instance.RegisterControllableActionHandler(this, InputControllerAction.Move, () => {});
     }
 
     // Update is called once per frame
@@ -94,22 +94,6 @@ public class Turtle : MonoBehaviour, IInteractible, IControllable
             animator.SetBool("isWalking", false);
         else
             animator.SetBool("isWalking", true);
-    }
-
-    public void OnLeftPressed()
-    {
-    }
-
-    public void OnLeftReleased()
-    {
-    }
-
-    public void OnRightPressed()
-    {
-    }
-
-    public void OnRightReleased()
-    {
     }
 
     public void Interact(Capybara capybara)

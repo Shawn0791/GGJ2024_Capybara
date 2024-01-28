@@ -37,24 +37,6 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Left"",
-                    ""type"": ""Button"",
-                    ""id"": ""a766bf61-8c32-4118-a9f3-a51dc7ce6ed4"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Right"",
-                    ""type"": ""Button"",
-                    ""id"": ""73aa2f51-f00d-4867-b9bd-b4f0467ca4d2"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""322d0df1-6ce4-4c1d-a4fa-98f911f68e5d"",
@@ -82,24 +64,6 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Up"",
-                    ""type"": ""Button"",
-                    ""id"": ""62c06aa5-1e9f-4798-b83d-60ba8125c8e3"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Down"",
-                    ""type"": ""Button"",
-                    ""id"": ""8f0c3c14-a389-46dc-93c2-283e0ac2edb1"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Move"",
                     ""type"": ""PassThrough"",
                     ""id"": ""2256b849-b46a-4b44-a4f5-dadccb6c664d"",
@@ -118,28 +82,6 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Fart"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""7a830481-79b3-410e-be44-68751b0391b5"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Left"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""28143262-f7ab-4ebe-8266-f60aac3470fb"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -177,28 +119,6 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""532ae307-ddfa-4ba9-91d7-e101806acea5"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Up"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8e1597ee-6cae-4bfd-b1aa-854ce75c1391"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Down"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
                     ""name"": ""2D Vector"",
                     ""id"": ""992fe087-1d8d-43e6-9250-ae7c1d571009"",
                     ""path"": ""2DVector"",
@@ -212,7 +132,7 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Up"",
                     ""id"": ""240cb483-be79-4518-81ec-1dc8e330c73c"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -223,7 +143,7 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Down"",
                     ""id"": ""29bcf3ff-eb15-4e1c-b90b-1c174cf6f475"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -234,7 +154,7 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Left"",
                     ""id"": ""f6e8e5e7-3c1e-4b91-a003-8c06ab840ed3"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -245,7 +165,7 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Right"",
                     ""id"": ""ad7151b2-2bac-4c7a-9e45-12a0f6750b5c"",
-                    ""path"": ""<Keyboard>/d"",
+                    ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -261,13 +181,9 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
         // Basic
         m_Basic = asset.FindActionMap("Basic", throwIfNotFound: true);
         m_Basic_Fart = m_Basic.FindAction("Fart", throwIfNotFound: true);
-        m_Basic_Left = m_Basic.FindAction("Left", throwIfNotFound: true);
-        m_Basic_Right = m_Basic.FindAction("Right", throwIfNotFound: true);
         m_Basic_Interact = m_Basic.FindAction("Interact", throwIfNotFound: true);
         m_Basic_Jump = m_Basic.FindAction("Jump", throwIfNotFound: true);
         m_Basic_Consume = m_Basic.FindAction("Consume", throwIfNotFound: true);
-        m_Basic_Up = m_Basic.FindAction("Up", throwIfNotFound: true);
-        m_Basic_Down = m_Basic.FindAction("Down", throwIfNotFound: true);
         m_Basic_Move = m_Basic.FindAction("Move", throwIfNotFound: true);
     }
 
@@ -331,26 +247,18 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Basic;
     private List<IBasicActions> m_BasicActionsCallbackInterfaces = new List<IBasicActions>();
     private readonly InputAction m_Basic_Fart;
-    private readonly InputAction m_Basic_Left;
-    private readonly InputAction m_Basic_Right;
     private readonly InputAction m_Basic_Interact;
     private readonly InputAction m_Basic_Jump;
     private readonly InputAction m_Basic_Consume;
-    private readonly InputAction m_Basic_Up;
-    private readonly InputAction m_Basic_Down;
     private readonly InputAction m_Basic_Move;
     public struct BasicActions
     {
         private @CapybaraInputActions m_Wrapper;
         public BasicActions(@CapybaraInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Fart => m_Wrapper.m_Basic_Fart;
-        public InputAction @Left => m_Wrapper.m_Basic_Left;
-        public InputAction @Right => m_Wrapper.m_Basic_Right;
         public InputAction @Interact => m_Wrapper.m_Basic_Interact;
         public InputAction @Jump => m_Wrapper.m_Basic_Jump;
         public InputAction @Consume => m_Wrapper.m_Basic_Consume;
-        public InputAction @Up => m_Wrapper.m_Basic_Up;
-        public InputAction @Down => m_Wrapper.m_Basic_Down;
         public InputAction @Move => m_Wrapper.m_Basic_Move;
         public InputActionMap Get() { return m_Wrapper.m_Basic; }
         public void Enable() { Get().Enable(); }
@@ -364,12 +272,6 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
             @Fart.started += instance.OnFart;
             @Fart.performed += instance.OnFart;
             @Fart.canceled += instance.OnFart;
-            @Left.started += instance.OnLeft;
-            @Left.performed += instance.OnLeft;
-            @Left.canceled += instance.OnLeft;
-            @Right.started += instance.OnRight;
-            @Right.performed += instance.OnRight;
-            @Right.canceled += instance.OnRight;
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
@@ -379,12 +281,6 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
             @Consume.started += instance.OnConsume;
             @Consume.performed += instance.OnConsume;
             @Consume.canceled += instance.OnConsume;
-            @Up.started += instance.OnUp;
-            @Up.performed += instance.OnUp;
-            @Up.canceled += instance.OnUp;
-            @Down.started += instance.OnDown;
-            @Down.performed += instance.OnDown;
-            @Down.canceled += instance.OnDown;
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
@@ -395,12 +291,6 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
             @Fart.started -= instance.OnFart;
             @Fart.performed -= instance.OnFart;
             @Fart.canceled -= instance.OnFart;
-            @Left.started -= instance.OnLeft;
-            @Left.performed -= instance.OnLeft;
-            @Left.canceled -= instance.OnLeft;
-            @Right.started -= instance.OnRight;
-            @Right.performed -= instance.OnRight;
-            @Right.canceled -= instance.OnRight;
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
@@ -410,12 +300,6 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
             @Consume.started -= instance.OnConsume;
             @Consume.performed -= instance.OnConsume;
             @Consume.canceled -= instance.OnConsume;
-            @Up.started -= instance.OnUp;
-            @Up.performed -= instance.OnUp;
-            @Up.canceled -= instance.OnUp;
-            @Down.started -= instance.OnDown;
-            @Down.performed -= instance.OnDown;
-            @Down.canceled -= instance.OnDown;
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
@@ -439,13 +323,9 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
     public interface IBasicActions
     {
         void OnFart(InputAction.CallbackContext context);
-        void OnLeft(InputAction.CallbackContext context);
-        void OnRight(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnConsume(InputAction.CallbackContext context);
-        void OnUp(InputAction.CallbackContext context);
-        void OnDown(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
     }
 }
