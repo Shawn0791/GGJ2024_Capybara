@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IInteractible
 {
-    void Interact();
+    void Interact(Capybara player);
 }

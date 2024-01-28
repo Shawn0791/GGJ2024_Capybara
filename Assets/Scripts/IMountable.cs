@@ -1,13 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 
-public interface IMountable : IInteractible
+public interface IMountable : IControllable
 {
-    void Dismount();
-    void OnLeftPressed();
-    void OnLeftReleased();
-    void OnRightPressed();
-    void OnRightReleased();
 }

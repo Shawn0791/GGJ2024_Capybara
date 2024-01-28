@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph;
 
 public class InputController : Singleton<InputController>
 {
@@ -17,6 +18,7 @@ public class InputController : Singleton<InputController>
 
     private IControllable currentControllable;
     public LastPressedKey ActiveDirectionKey {get; set;} = LastPressedKey.None;
+    public bool IsJumping {get; set;} = false;
 
     protected override void Awake()
     {
@@ -33,7 +35,8 @@ public class InputController : Singleton<InputController>
         inputActions.Basic.Right.started += ctx => OnRightPressed();
         inputActions.Basic.Right.canceled += ctx => OnRightReleased();
         inputActions.Basic.Interact.started += ctx => OnInteract();
-        inputActions.Basic.Jump.started += ctx => OnJump();
+        inputActions.Basic.Jump.started += ctx => OnJumpPressed();
+        inputActions.Basic.Jump.canceled += ctx => OnJumpReleased();
     }
 
     public void ToggleInputActionState(InputControllerAction inputControllerAction, bool isEnabled)
@@ -144,21 +147,31 @@ public class InputController : Singleton<InputController>
         }
     }
 
-    private void OnJump()
+    public void SetCurrentControllable(IControllable controllable)
+    {
+        currentControllable = controllable;
+    }
+
+    public IControllable GetCurrentControllable()
+    {
+        return currentControllable;
+    }
+
+    private void OnJumpPressed()
     {
         if (!inputActionEnabledMap[InputControllerAction.Jump])
         {
             return;
         }
-
-        if (currentControllable != null && inputActionMap.ContainsKey(currentControllable))
-        {
-            inputActionMap[currentControllable][InputControllerAction.Jump].Invoke();
-        }
+        IsJumping = true;
     }
 
-    public void SetCurrentControllable(IControllable controllable)
+    private void OnJumpReleased()
     {
-        currentControllable = controllable;
+        if (!inputActionEnabledMap[InputControllerAction.Jump])
+        {
+            return;
+        }
+        IsJumping = false;
     }
 }

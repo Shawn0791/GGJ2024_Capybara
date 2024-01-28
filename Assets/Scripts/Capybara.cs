@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
@@ -19,10 +20,11 @@ public class Capybara : MonoBehaviour, IControllable
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     public LayerMask groundLayer;
-    private bool isFacingLeft = true;
+    public bool IsFacingLeft { get; set; } = true;
     private bool isRolling = false;
-    private IInteractible currentInteractibleObject;
-    private Queue<FartEvent> fartEventQueue = new Queue<FartEvent>();
+    private IControllable currentMountableObject;
+    private List<IInteractible> interactibleQueue = new();
+    private Queue<FartEvent> fartEventQueue = new();
     private FartEvent playerFartEvent;
 
     private void Awake()
@@ -48,12 +50,12 @@ public class Capybara : MonoBehaviour, IControllable
         {
             if (InputController.Instance.ActiveDirectionKey == LastPressedKey.Left)
             {
-                isFacingLeft = true;
+                IsFacingLeft = true;
                 rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
             }
             else if (InputController.Instance.ActiveDirectionKey == LastPressedKey.Right)
             {
-                isFacingLeft = false;
+                IsFacingLeft = false;
                 rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
             }
             else
@@ -61,7 +63,7 @@ public class Capybara : MonoBehaviour, IControllable
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }
         }
-        if (isFacingLeft)
+        if (IsFacingLeft)
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
@@ -104,7 +106,7 @@ public class Capybara : MonoBehaviour, IControllable
     public void OnFart()
     {
         Debug.Log($"idleFartSpawnPoint {idleFartSpawnPoint.right}, fartSpawnPoint {fartSpawnPoint.position}");
-        rb.AddForceAtPosition((isFacingLeft ? -1 : 1) * fartForce * idleFartSpawnPoint.right, fartSpawnPoint.position);
+        rb.AddForceAtPosition((IsFacingLeft ? -1 : 1) * fartForce * idleFartSpawnPoint.right, fartSpawnPoint.position);
     }
 
     private void GroundDetection()
@@ -137,14 +139,19 @@ public class Capybara : MonoBehaviour, IControllable
         }
     }
 
-    public void SetCurrentInteractibleObject(IInteractible interactible)
+    public void AddInteractibleObject(IInteractible interactible)
     {
-        currentInteractibleObject = interactible;
+        interactibleQueue.Add(interactible);
     }
 
-    public void SetCurrentMountableObject(IMountable mountable)
+    public void RemoveInteractibleObject(IInteractible interactible)
     {
-        currentInteractibleObject = null;
+        interactibleQueue.Remove(interactible);
+    }
+
+    public void SetCurrentMountableObject(IControllable mountable)
+    {
+        currentMountableObject = mountable;
     }
 
     public void ReparentSelfOnMount(Transform newParentTransform)
@@ -159,6 +166,7 @@ public class Capybara : MonoBehaviour, IControllable
         enabled = false;
         boxCollider2D.enabled = false;
         circleCollider2D.enabled = false;
+        InputController.Instance.SetCurrentControllable(currentMountableObject);
     }
 
     public void EnableSelfOnMount()
@@ -170,7 +178,11 @@ public class Capybara : MonoBehaviour, IControllable
 
     public void OnInteract()
     {
-        currentInteractibleObject?.Interact();
+        if (interactibleQueue.Count > 0)
+        {
+            IInteractible interactible = interactibleQueue[interactibleQueue.Count - 1];
+            interactible.Interact(this);
+        }
     }
 
     public void OnJump()
@@ -185,6 +197,6 @@ public class Capybara : MonoBehaviour, IControllable
 
     public void Fart(FartEvent evt)
     {
-        rb.AddForceAtPosition((isFacingLeft ? -1 : 1) * evt.Force * (Quaternion.AngleAxis(evt.Angle, Vector3.back) * idleFartSpawnPoint.right), fartSpawnPoint.position);
+        rb.AddForceAtPosition((IsFacingLeft ? -1 : 1) * evt.Force * (Quaternion.AngleAxis(evt.Angle, Vector3.back) * idleFartSpawnPoint.right), fartSpawnPoint.position);
     }
 }

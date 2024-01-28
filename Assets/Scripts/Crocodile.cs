@@ -54,7 +54,7 @@ public class Crocodile : MonoBehaviour, IMountable, IControllable
             if (player == null)
             {
                 player = collision.transform.parent.GetComponent<Capybara>();
-                player.SetCurrentInteractibleObject(this);
+                //player.SetCurrentInteractibleObject(this);
             }
         }
     }
@@ -64,7 +64,7 @@ public class Crocodile : MonoBehaviour, IMountable, IControllable
         if (collision.CompareTag("ViewPort"))
         {
             animator.SetBool("isSleeping", true);
-            player.SetCurrentInteractibleObject(null);
+            //player.SetCurrentInteractibleObject(null);
         }
         else if (collision.CompareTag("InteractablePort"))
         {
@@ -149,7 +149,7 @@ public class Crocodile : MonoBehaviour, IMountable, IControllable
         if (allowInteraction)
         {
             //Start riding
-            player.SetCurrentInteractibleObject(this);
+            //player.SetCurrentInteractibleObject(this);
             player.ReparentSelfOnMount(ridePoint);
             //Capybara stop input
             player.DisableSelfOnMount();
@@ -166,7 +166,7 @@ public class Crocodile : MonoBehaviour, IMountable, IControllable
         mountInputActions.Disable();
         player.EnableSelfOnMount();
         player.ReparentSelfOnMount(null);
-        player.SetCurrentInteractibleObject(null);
+        //player.SetCurrentInteractibleObject(null);
         boxCollider2D.isTrigger = true;
         rb2d.simulated = false;
         isRiding = false;
