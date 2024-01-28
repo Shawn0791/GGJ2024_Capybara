@@ -19,7 +19,10 @@ public class Orange : MonoBehaviour
         {
             if (InputController.Instance.IsConsuming)
             {
-                audioSource.PlayOneShot(consumeSound);
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.PlayOneShot(consumeSound);
+                }
                 GameController.Instance.SatiationAdd(satiationIncrease);
                 Destroy(gameObject);
             }
