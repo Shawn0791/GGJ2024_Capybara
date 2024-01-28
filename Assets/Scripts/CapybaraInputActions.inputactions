@@ -15,24 +15,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Left",
-                    "type": "Button",
-                    "id": "a766bf61-8c32-4118-a9f3-a51dc7ce6ed4",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Right",
-                    "type": "Button",
-                    "id": "73aa2f51-f00d-4867-b9bd-b4f0467ca4d2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "322d0df1-6ce4-4c1d-a4fa-98f911f68e5d",
@@ -60,24 +42,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Up",
-                    "type": "Button",
-                    "id": "62c06aa5-1e9f-4798-b83d-60ba8125c8e3",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Down",
-                    "type": "Button",
-                    "id": "8f0c3c14-a389-46dc-93c2-283e0ac2edb1",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Move",
                     "type": "PassThrough",
                     "id": "2256b849-b46a-4b44-a4f5-dadccb6c664d",
@@ -96,28 +60,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Fart",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7a830481-79b3-410e-be44-68751b0391b5",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Left",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "28143262-f7ab-4ebe-8266-f60aac3470fb",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Right",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -155,28 +97,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "532ae307-ddfa-4ba9-91d7-e101806acea5",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Up",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8e1597ee-6cae-4bfd-b1aa-854ce75c1391",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Down",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "2D Vector",
                     "id": "992fe087-1d8d-43e6-9250-ae7c1d571009",
                     "path": "2DVector",
@@ -190,7 +110,7 @@
                 {
                     "name": "Up",
                     "id": "240cb483-be79-4518-81ec-1dc8e330c73c",
-                    "path": "<Keyboard>/w",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -201,7 +121,7 @@
                 {
                     "name": "Down",
                     "id": "29bcf3ff-eb15-4e1c-b90b-1c174cf6f475",
-                    "path": "<Keyboard>/s",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -212,7 +132,7 @@
                 {
                     "name": "Left",
                     "id": "f6e8e5e7-3c1e-4b91-a003-8c06ab840ed3",
-                    "path": "<Keyboard>/a",
+                    "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -223,7 +143,7 @@
                 {
                     "name": "Right",
                     "id": "ad7151b2-2bac-4c7a-9e45-12a0f6750b5c",
-                    "path": "<Keyboard>/d",
+                    "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
