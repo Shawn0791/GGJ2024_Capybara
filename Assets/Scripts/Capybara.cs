@@ -66,11 +66,11 @@ public class Capybara : MonoBehaviour, IControllable
         }
         if (IsFacingLeft)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(2, 2, 2);
         }
         else
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-2, 2, 2);
         }
 
         if (playerFartEvent != null)
