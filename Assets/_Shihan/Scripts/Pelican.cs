@@ -28,6 +28,7 @@ public class Pelican : MonoBehaviour, IInteractible, IControllable
     private void Start()
     {
         InputController.Instance.RegisterControllableActionHandler(this, InputControllerAction.Move, () => {});
+        InputController.Instance.RegisterControllableActionHandler(this, InputControllerAction.Interact, OnInteract);
     }
 
     // Update is called once per frame
@@ -82,26 +83,10 @@ public class Pelican : MonoBehaviour, IInteractible, IControllable
             transform.localScale = new Vector3(-Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
 
-        if (movement.x == 0 && movement.y == 0) 
+        if (movement.x == 0 && movement.y == 0)
             animator.SetBool("isFlying", false);
         else
             animator.SetBool("isFlying", true);
-    }
-
-    public void OnLeftPressed()
-    {
-    }
-
-    public void OnLeftReleased()
-    {
-    }
-
-    public void OnRightPressed()
-    {
-    }
-
-    public void OnRightReleased()
-    {
     }
 
     public void Interact(Capybara capybara)
@@ -124,8 +109,8 @@ public class Pelican : MonoBehaviour, IInteractible, IControllable
         player.EnableSelfOnMount();
         player.ReparentSelfOnMount(null);
         player.SetCurrentMountableObject(null);
-        boxCollider2D.isTrigger = true;
-        rb2d.simulated = false;
+        boxCollider2D.isTrigger = false;
+        rb2d.simulated = true;
     }
 
     public void OnFart()
