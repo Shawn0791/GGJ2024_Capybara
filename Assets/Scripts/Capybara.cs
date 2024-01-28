@@ -14,6 +14,7 @@ public class Capybara : MonoBehaviour, IControllable
     [SerializeField] private float raycastDistance = 1.0f;
     [SerializeField] private float velocityThreshold = 5f;
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float jumpForce = 5f;
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider2D;
     private CircleCollider2D circleCollider2D;
@@ -26,7 +27,7 @@ public class Capybara : MonoBehaviour, IControllable
     private List<IInteractible> interactibleQueue = new();
     private Queue<FartEvent> fartEventQueue = new();
     private FartEvent playerFartEvent;
-
+    private bool isGrounded = true;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -80,6 +81,10 @@ public class Capybara : MonoBehaviour, IControllable
         {
             Fart(fartEventQueue.Dequeue());
         }
+        else if (isGrounded && InputController.Instance.IsJumping)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        }
     }
 
     public void OnLeftPressed()
@@ -114,6 +119,7 @@ public class Capybara : MonoBehaviour, IControllable
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, raycastDistance, groundLayer);
         if (hit.collider != null)
         {
+            isGrounded = true;
             if (rb.velocity.magnitude < velocityThreshold && isRolling)
             {
                 Debug.DrawLine(transform.position, hit.point, Color.red);
@@ -128,6 +134,7 @@ public class Capybara : MonoBehaviour, IControllable
         }
         else
         {
+            isGrounded = false;
             Debug.DrawLine(transform.position, transform.position + new Vector3(0, -raycastDistance, 0), Color.green);
             if (!isRolling)
             {
