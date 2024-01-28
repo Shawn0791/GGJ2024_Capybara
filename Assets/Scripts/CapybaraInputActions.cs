@@ -71,6 +71,15 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Consume"",
+                    ""type"": ""Button"",
+                    ""id"": ""1450465a-4442-4edf-8973-96610c3def7d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -128,6 +137,17 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9e21377e-7189-4371-82fc-175d86446abf"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Consume"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -141,6 +161,7 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
         m_Basic_Right = m_Basic.FindAction("Right", throwIfNotFound: true);
         m_Basic_Interact = m_Basic.FindAction("Interact", throwIfNotFound: true);
         m_Basic_Jump = m_Basic.FindAction("Jump", throwIfNotFound: true);
+        m_Basic_Consume = m_Basic.FindAction("Consume", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -207,6 +228,7 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Basic_Right;
     private readonly InputAction m_Basic_Interact;
     private readonly InputAction m_Basic_Jump;
+    private readonly InputAction m_Basic_Consume;
     public struct BasicActions
     {
         private @CapybaraInputActions m_Wrapper;
@@ -216,6 +238,7 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
         public InputAction @Right => m_Wrapper.m_Basic_Right;
         public InputAction @Interact => m_Wrapper.m_Basic_Interact;
         public InputAction @Jump => m_Wrapper.m_Basic_Jump;
+        public InputAction @Consume => m_Wrapper.m_Basic_Consume;
         public InputActionMap Get() { return m_Wrapper.m_Basic; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -240,6 +263,9 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @Consume.started += instance.OnConsume;
+            @Consume.performed += instance.OnConsume;
+            @Consume.canceled += instance.OnConsume;
         }
 
         private void UnregisterCallbacks(IBasicActions instance)
@@ -259,6 +285,9 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @Consume.started -= instance.OnConsume;
+            @Consume.performed -= instance.OnConsume;
+            @Consume.canceled -= instance.OnConsume;
         }
 
         public void RemoveCallbacks(IBasicActions instance)
@@ -283,5 +312,6 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
         void OnRight(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnConsume(InputAction.CallbackContext context);
     }
 }

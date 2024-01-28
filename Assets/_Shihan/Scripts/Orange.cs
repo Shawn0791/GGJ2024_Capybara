@@ -5,24 +5,15 @@ using UnityEngine;
 public class Orange : MonoBehaviour
 {
     public float satiationIncrease;
-    void Start()
-    {
-        
-    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("InteractablePort"))
         {
-            if (Input.GetKeyDown(KeyCode.C))
+            if (InputController.Instance.IsConsuming)
             {
                 GameController.Instance.SatiationAdd(satiationIncrease);
                 Destroy(gameObject);
             }
         }
-    }
-
-    void Update()
-    {
-        
     }
 }

@@ -19,6 +19,7 @@ public class InputController : Singleton<InputController>
     private IControllable currentControllable;
     public LastPressedKey ActiveDirectionKey {get; set;} = LastPressedKey.None;
     public bool IsJumping {get; set;} = false;
+    public bool IsConsuming {get; set;} = false;
 
     protected override void Awake()
     {
@@ -37,6 +38,8 @@ public class InputController : Singleton<InputController>
         inputActions.Basic.Interact.started += ctx => OnInteract();
         inputActions.Basic.Jump.started += ctx => OnJumpPressed();
         inputActions.Basic.Jump.canceled += ctx => OnJumpReleased();
+        inputActions.Basic.Consume.started += ctx => OnConsumeStarted();
+        inputActions.Basic.Consume.canceled += ctx => OnConsumeReleased();
     }
 
     public void ToggleInputActionState(InputControllerAction inputControllerAction, bool isEnabled)
@@ -173,5 +176,15 @@ public class InputController : Singleton<InputController>
             return;
         }
         IsJumping = false;
+    }
+
+    private void OnConsumeStarted()
+    {
+        IsConsuming = true;
+    }
+
+    private void OnConsumeReleased()
+    {
+        IsConsuming = false;
     }
 }
