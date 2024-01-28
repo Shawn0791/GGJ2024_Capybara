@@ -6,5 +6,6 @@ public enum InputControllerAction
     RightPressed,
     RightReleased,
     Interact,
-    Jump
+    Jump,
+    Move
 }

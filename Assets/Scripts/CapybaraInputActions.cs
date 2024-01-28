@@ -80,6 +80,33 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""type"": ""Button"",
+                    ""id"": ""62c06aa5-1e9f-4798-b83d-60ba8125c8e3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""8f0c3c14-a389-46dc-93c2-283e0ac2edb1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""2256b849-b46a-4b44-a4f5-dadccb6c664d"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -148,6 +175,83 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Consume"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""532ae307-ddfa-4ba9-91d7-e101806acea5"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8e1597ee-6cae-4bfd-b1aa-854ce75c1391"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""992fe087-1d8d-43e6-9250-ae7c1d571009"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""id"": ""240cb483-be79-4518-81ec-1dc8e330c73c"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Down"",
+                    ""id"": ""29bcf3ff-eb15-4e1c-b90b-1c174cf6f475"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Left"",
+                    ""id"": ""f6e8e5e7-3c1e-4b91-a003-8c06ab840ed3"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""id"": ""ad7151b2-2bac-4c7a-9e45-12a0f6750b5c"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -162,6 +266,9 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
         m_Basic_Interact = m_Basic.FindAction("Interact", throwIfNotFound: true);
         m_Basic_Jump = m_Basic.FindAction("Jump", throwIfNotFound: true);
         m_Basic_Consume = m_Basic.FindAction("Consume", throwIfNotFound: true);
+        m_Basic_Up = m_Basic.FindAction("Up", throwIfNotFound: true);
+        m_Basic_Down = m_Basic.FindAction("Down", throwIfNotFound: true);
+        m_Basic_Move = m_Basic.FindAction("Move", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -229,6 +336,9 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Basic_Interact;
     private readonly InputAction m_Basic_Jump;
     private readonly InputAction m_Basic_Consume;
+    private readonly InputAction m_Basic_Up;
+    private readonly InputAction m_Basic_Down;
+    private readonly InputAction m_Basic_Move;
     public struct BasicActions
     {
         private @CapybaraInputActions m_Wrapper;
@@ -239,6 +349,9 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Basic_Interact;
         public InputAction @Jump => m_Wrapper.m_Basic_Jump;
         public InputAction @Consume => m_Wrapper.m_Basic_Consume;
+        public InputAction @Up => m_Wrapper.m_Basic_Up;
+        public InputAction @Down => m_Wrapper.m_Basic_Down;
+        public InputAction @Move => m_Wrapper.m_Basic_Move;
         public InputActionMap Get() { return m_Wrapper.m_Basic; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -266,6 +379,15 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
             @Consume.started += instance.OnConsume;
             @Consume.performed += instance.OnConsume;
             @Consume.canceled += instance.OnConsume;
+            @Up.started += instance.OnUp;
+            @Up.performed += instance.OnUp;
+            @Up.canceled += instance.OnUp;
+            @Down.started += instance.OnDown;
+            @Down.performed += instance.OnDown;
+            @Down.canceled += instance.OnDown;
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
         }
 
         private void UnregisterCallbacks(IBasicActions instance)
@@ -288,6 +410,15 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
             @Consume.started -= instance.OnConsume;
             @Consume.performed -= instance.OnConsume;
             @Consume.canceled -= instance.OnConsume;
+            @Up.started -= instance.OnUp;
+            @Up.performed -= instance.OnUp;
+            @Up.canceled -= instance.OnUp;
+            @Down.started -= instance.OnDown;
+            @Down.performed -= instance.OnDown;
+            @Down.canceled -= instance.OnDown;
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
         }
 
         public void RemoveCallbacks(IBasicActions instance)
@@ -313,5 +444,8 @@ public partial class @CapybaraInputActions: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnConsume(InputAction.CallbackContext context);
+        void OnUp(InputAction.CallbackContext context);
+        void OnDown(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
     }
 }

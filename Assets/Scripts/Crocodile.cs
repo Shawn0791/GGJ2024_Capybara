@@ -140,4 +140,8 @@ public class Crocodile : MonoBehaviour, IInteractible, IControllable
     public void OnJump()
     {
     }
+
+    public void OnMovement(Vector2 movement)
+    {
+    }
 }

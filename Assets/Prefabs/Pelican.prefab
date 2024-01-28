@@ -311,6 +311,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b88870b1dfd2e41b6a41f0cc3ee47f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ridePoint: {fileID: 3800417187449225316}
+  moveSpeed: 5
+  groundCheck: {fileID: 3870438390040749927}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &5222803934341707239
 GameObject:
   m_ObjectHideFlags: 0

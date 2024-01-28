@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.ShaderGraph;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputController : Singleton<InputController>
 {
@@ -13,13 +16,15 @@ public class InputController : Singleton<InputController>
         {InputControllerAction.RightPressed, true},
         {InputControllerAction.RightReleased, true},
         {InputControllerAction.Interact, true},
-        {InputControllerAction.Jump, true}
+        {InputControllerAction.Jump, true},
+        {InputControllerAction.Move, true}
     };
 
     private IControllable currentControllable;
     public LastPressedKey ActiveDirectionKey {get; set;} = LastPressedKey.None;
     public bool IsJumping {get; set;} = false;
     public bool IsConsuming {get; set;} = false;
+    public Vector2 Movement {get; set;} = Vector2.zero;
 
     protected override void Awake()
     {
@@ -40,6 +45,7 @@ public class InputController : Singleton<InputController>
         inputActions.Basic.Jump.canceled += ctx => OnJumpReleased();
         inputActions.Basic.Consume.started += ctx => OnConsumeStarted();
         inputActions.Basic.Consume.canceled += ctx => OnConsumeReleased();
+        inputActions.Basic.Move.performed += ctx => OnMovement(ctx);
     }
 
     public void ToggleInputActionState(InputControllerAction inputControllerAction, bool isEnabled)
@@ -60,6 +66,7 @@ public class InputController : Singleton<InputController>
         inputActionMap[controllable].Add(InputControllerAction.RightReleased, controllable.OnRightReleased);
         inputActionMap[controllable].Add(InputControllerAction.Interact, controllable.OnInteract);
         inputActionMap[controllable].Add(InputControllerAction.Jump, controllable.OnJump);
+        inputActionMap[controllable].Add(InputControllerAction.Move, () => {});
     }
 
     private void OnFart()
@@ -186,5 +193,19 @@ public class InputController : Singleton<InputController>
     private void OnConsumeReleased()
     {
         IsConsuming = false;
+    }
+
+    private void OnMovement(InputAction.CallbackContext ctx)
+    {
+        if (!inputActionEnabledMap[InputControllerAction.Move])
+        {
+            return;
+        }
+
+        Movement = ctx.ReadValue<Vector2>();
+        if (currentControllable != null && inputActionMap.ContainsKey(currentControllable))
+        {
+            inputActionMap[currentControllable][InputControllerAction.Move].Invoke();
+        }
     }
 }

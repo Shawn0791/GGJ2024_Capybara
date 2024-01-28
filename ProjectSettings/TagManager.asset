@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ViewPort
   - InteractablePort
+  - Interactible
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Player
   - Mount
   - Ground
-  - 
+  - Interactible
   - 
   - 
   - 
