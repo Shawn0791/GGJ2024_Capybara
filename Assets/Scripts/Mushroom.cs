@@ -57,7 +57,10 @@ public class Mushroom : MonoBehaviour, IControllable, IInteractible
         rb2d.bodyType = RigidbodyType2D.Dynamic;
         rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
         animator.enabled = false;
-        isFacingLeft = player.IsFacingLeft;
+        if (player.IsFacingLeft)
+        {
+            player.transform.localScale = new Vector3(-1 * Math.Abs(player.transform.localScale.x), player.transform.localScale.y, player.transform.localScale.z);
+        }
     }
 
     public void Dismount()
@@ -110,14 +113,8 @@ public class Mushroom : MonoBehaviour, IControllable, IInteractible
 
         rb2d.velocity = new Vector2(Math.Sign(movement.x) * moveSpeed, rb2d.velocity.y);
 
-        if (isFacingLeft)
-        {
-            transform.localScale = new Vector3(Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-        }
-        else
-        {
-            transform.localScale = new Vector3(-Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-        }
+
+        transform.localScale = new Vector3((isFacingLeft ? -1 : 1) * Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
 
         // Jump
         if (isGrounded && InputController.Instance.IsJumping)
