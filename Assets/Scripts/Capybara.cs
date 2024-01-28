@@ -157,7 +157,10 @@ public class Capybara : MonoBehaviour, IControllable
     public void ReparentSelfOnMount(Transform newParentTransform)
     {
         transform.SetParent(newParentTransform);
-        transform.position = newParentTransform.position;
+        if (newParentTransform)
+        {
+            transform.position = newParentTransform.position;
+        }
     }
 
     public void DisableSelfOnMount()
@@ -174,6 +177,7 @@ public class Capybara : MonoBehaviour, IControllable
         rb.simulated = true;
         enabled = true;
         boxCollider2D.enabled = true;
+        InputController.Instance.SetCurrentControllable(this);
     }
 
     public void OnInteract()
@@ -198,5 +202,15 @@ public class Capybara : MonoBehaviour, IControllable
     public void Fart(FartEvent evt)
     {
         rb.AddForceAtPosition((IsFacingLeft ? -1 : 1) * evt.Force * (Quaternion.AngleAxis(evt.Angle, Vector3.back) * idleFartSpawnPoint.right), fartSpawnPoint.position);
+    }
+
+    public void ReverseScale()
+    {
+        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+    }
+
+    public void ResetScale()
+    {
+        transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
     }
 }
