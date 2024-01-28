@@ -29,6 +29,7 @@ public class Mushroom : MonoBehaviour, IControllable, IInteractible
     private void Start()
     {
         InputController.Instance.RegisterControllableActionHandler(this, InputControllerAction.Move, () => {});
+        InputController.Instance.RegisterControllableActionHandler(this, InputControllerAction.Interact, OnInteract);
     }
 
     // Update is called once per frame
@@ -62,8 +63,8 @@ public class Mushroom : MonoBehaviour, IControllable, IInteractible
         player.EnableSelfOnMount();
         player.ReparentSelfOnMount(null);
         player.SetCurrentMountableObject(null);
-        boxCollider2D.isTrigger = true;
-        rb2d.simulated = false;
+        boxCollider2D.isTrigger = false;
+        rb2d.simulated = true;
         rb2d.bodyType = RigidbodyType2D.Static;
         animator.enabled = true;
         player = null;

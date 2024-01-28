@@ -28,6 +28,7 @@ public class Turtle : MonoBehaviour, IInteractible, IControllable
     private void Start()
     {
         InputController.Instance.RegisterControllableActionHandler(this, InputControllerAction.Move, () => {});
+        InputController.Instance.RegisterControllableActionHandler(this, InputControllerAction.Interact, OnInteract);
     }
 
     // Update is called once per frame
@@ -107,7 +108,6 @@ public class Turtle : MonoBehaviour, IInteractible, IControllable
         player.ReverseScale();
         //Pelican movement active
         boxCollider2D.isTrigger = false;
-        rb2d.simulated = true;
         isFacingLeft = player.IsFacingLeft;
     }
 
@@ -116,8 +116,7 @@ public class Turtle : MonoBehaviour, IInteractible, IControllable
         player.EnableSelfOnMount();
         player.ReparentSelfOnMount(null);
         player.SetCurrentMountableObject(null);
-        boxCollider2D.isTrigger = true;
-        rb2d.simulated = false;
+        boxCollider2D.isTrigger = false;
     }
 
     public void OnFart()
