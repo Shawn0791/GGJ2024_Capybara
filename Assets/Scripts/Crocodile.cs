@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crocodile : MonoBehaviour, IMountable
+public class Crocodile : MonoBehaviour, IMountable, IControllable
 {
     private Animator animator;
     private Rigidbody2D rb2d;
@@ -171,4 +171,19 @@ public class Crocodile : MonoBehaviour, IMountable
         rb2d.simulated = false;
         isRiding = false;
     }
+
+    public void OnFart()
+    {
+
+    }
+
+    public void OnInteract()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnJump()
+    {
+    }
+
 }

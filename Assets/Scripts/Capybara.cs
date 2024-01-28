@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 
-public class Capybara : MonoBehaviour
+public class Capybara : MonoBehaviour, IControllable
 {
     [SerializeField] private Transform fartSpawnPoint;
     [SerializeField] private Transform idleFartSpawnPoint;
@@ -14,13 +14,11 @@ public class Capybara : MonoBehaviour
     [SerializeField] private float velocityThreshold = 5f;
     [SerializeField] private float moveSpeed = 5f;
     private Rigidbody2D rb;
-    private CapybaraInputActions inputActions;
     private BoxCollider2D boxCollider2D;
     private CircleCollider2D circleCollider2D;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     public LayerMask groundLayer;
-    private LastPressedKey lastPressedKey = LastPressedKey.None;
     private bool isFacingLeft = true;
     private bool isRolling = false;
     private IInteractible currentInteractibleObject;
@@ -29,8 +27,8 @@ public class Capybara : MonoBehaviour
 
     private void Awake()
     {
-        inputActions = new CapybaraInputActions();
-        inputActions.Enable();
+        InputController.Instance.RegisterControllable(this);
+        InputController.Instance.SetCurrentControllable(this);
         rb = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         circleCollider2D = GetComponent<CircleCollider2D>();
@@ -40,12 +38,6 @@ public class Capybara : MonoBehaviour
 
     private void Start()
     {
-        inputActions.Basic.Fart.started += ctx => OnFart();
-        inputActions.Basic.Left.started += ctx => OnLeftPressed(ctx);
-        inputActions.Basic.Left.canceled += ctx => OnLeftReleased(ctx);
-        inputActions.Basic.Right.started += ctx => OnRightPressed(ctx);
-        inputActions.Basic.Right.canceled += ctx => OnRightReleased(ctx);
-        inputActions.Basic.Interact.started += ctx => OnInteract();
     }
 
     // Update is called once per frame
@@ -54,12 +46,12 @@ public class Capybara : MonoBehaviour
         GroundDetection();
         if (!isRolling)
         {
-            if (lastPressedKey == LastPressedKey.Left)
+            if (InputController.Instance.ActiveDirectionKey == LastPressedKey.Left)
             {
                 isFacingLeft = true;
                 rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
             }
-            else if (lastPressedKey == LastPressedKey.Right)
+            else if (InputController.Instance.ActiveDirectionKey == LastPressedKey.Right)
             {
                 isFacingLeft = false;
                 rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
@@ -88,37 +80,23 @@ public class Capybara : MonoBehaviour
         }
     }
 
-    private void OnLeftPressed(InputAction.CallbackContext context)
+    public void OnLeftPressed()
     {
-        lastPressedKey = LastPressedKey.Left;
         animator.SetBool("isWalking", true);
     }
 
-    private void OnRightPressed(InputAction.CallbackContext context)
+    public void OnRightPressed()
     {
-        lastPressedKey = LastPressedKey.Right;
         animator.SetBool("isWalking", true);
     }
 
-    private void OnLeftReleased(InputAction.CallbackContext context)
+    public void OnLeftReleased()
     {
-        if (lastPressedKey != LastPressedKey.Left)
-        {
-            return;
-        }
-
-        lastPressedKey = LastPressedKey.None;
         animator.SetBool("isWalking", false);
     }
 
-    private void OnRightReleased(InputAction.CallbackContext context)
+    public void OnRightReleased()
     {
-        if (lastPressedKey != LastPressedKey.Right)
-        {
-            return;
-        }
-
-        lastPressedKey = LastPressedKey.None;
         animator.SetBool("isWalking", false);
     }
 
@@ -181,7 +159,6 @@ public class Capybara : MonoBehaviour
         enabled = false;
         boxCollider2D.enabled = false;
         circleCollider2D.enabled = false;
-        inputActions.Disable();
     }
 
     public void EnableSelfOnMount()
@@ -189,12 +166,16 @@ public class Capybara : MonoBehaviour
         rb.simulated = true;
         enabled = true;
         boxCollider2D.enabled = true;
-        inputActions.Enable();
     }
 
     public void OnInteract()
     {
         currentInteractibleObject?.Interact();
+    }
+
+    public void OnJump()
+    {
+        // TODO: implement
     }
 
     public void EnqueueFartEvent(float randomFartForce, float randomDisturbanceAngle)

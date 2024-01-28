@@ -101,7 +101,6 @@ public class Mushroom : MonoBehaviour, IMountable
         {
             animator.SetBool("interactable", false);
             player.SetCurrentInteractibleObject(null);
-            player = null;
         }
         else if (collision.CompareTag("InteractablePort"))
         {
