@@ -17,6 +17,7 @@ public class Mushroom : MonoBehaviour, IControllable, IInteractible
     public float jumpForce = 10f;
     public Transform groundCheck;
     public LayerMask groundLayer;
+    public float detectionDis;
     private bool isGrounded;
     private bool isFacingLeft = true;
     void Awake()
@@ -54,6 +55,7 @@ public class Mushroom : MonoBehaviour, IControllable, IInteractible
         boxCollider2D.isTrigger = false;
         rb2d.simulated = true;
         rb2d.bodyType = RigidbodyType2D.Dynamic;
+        rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
         animator.enabled = false;
         isFacingLeft = player.IsFacingLeft;
     }
@@ -93,7 +95,7 @@ public class Mushroom : MonoBehaviour, IControllable, IInteractible
     private void MushroomMovement()
     {
         // Ground Decetion
-        isGrounded = Physics2D.Raycast(groundCheck.position, Vector2.down, 0.1f, groundLayer);
+        isGrounded = Physics2D.Raycast(groundCheck.position, Vector2.down, detectionDis, groundLayer);
 
         // Movement
         Vector2 movement = InputController.Instance.Movement;
