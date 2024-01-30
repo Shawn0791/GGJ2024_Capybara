@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 4187199368118845120}
   - component: {fileID: 461647140545370086}
   m_Layer: 0
-  m_Name: Part
+  m_Name: Fart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 4887121430633849161}
   serializedVersion: 2
   m_LocalRotation: {x: 0.000000059604638, y: 0.70710665, z: -0, w: 0.70710707}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.24999964, y: -0.000000461936, z: 0.000000059604627}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -82,7 +82,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -201,8 +201,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 20
-      minScalar: 15
+      scalar: 5
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -253,8 +253,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 0
-      minColor: {r: 1, g: 1, b: 1, a: 1}
+      minMaxState: 2
+      minColor: {r: 0.8238993, g: 0.8238993, b: 0.8238993, a: 1}
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
@@ -4984,7 +4984,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.49550283}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4995,7 +4995,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 15.711462, y: 8.365574}
+  m_Size: {x: 6.606594, y: 4.94662}
   m_EdgeRadius: 0
 --- !u!1 &6737112209795524573
 GameObject:
@@ -5197,7 +5197,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 885731
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_Sprite: {fileID: -103074608, guid: 928c936b8d4bd374789066f6b4516fc9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5308,7 +5308,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 65536
-  fartParticle: {fileID: 0}
+  fartParticle: {fileID: 4187199368118845120}
 --- !u!58 &1300287969159067639
 CircleCollider2D:
   m_ObjectHideFlags: 0
