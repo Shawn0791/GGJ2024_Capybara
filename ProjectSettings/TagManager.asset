@@ -8,6 +8,10 @@ TagManager:
   - InteractablePort
   - Interactible
   - Water
+  - SatiationBar
+  - RestlessnessBar
+  - SceneTransferUI
+  - GameOverUI
   layers:
   - Default
   - TransparentFX

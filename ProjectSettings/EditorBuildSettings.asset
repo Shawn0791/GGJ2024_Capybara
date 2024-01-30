@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Test - Shihan.unity
+    path: Assets/Scenes/Demo scene.unity
     guid: e10a49863180c694b881e09585b3249f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a9b65c25f9d2cc44e9c75e9764b61973, type: 2}

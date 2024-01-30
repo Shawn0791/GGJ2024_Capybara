@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : Singleton<GameController>
 {
@@ -22,19 +23,24 @@ public class GameController : Singleton<GameController>
     private float satiation;
     public float satiationMax;
     public float satiationReduceSpeed;
-    private float restlessness;
+    [SerializeField]private float restlessness;
     public float restlessnessMax;
     public float restReduceSpeed;
     public Slider satiationBar;
     public Slider restlessnessBar;
+    public Image sceneTransfer;
+    public GameObject gameOverUI;
+    private float fartPara;
+    private AudioSource audioSource;
     protected override void Awake()
     {
         base.Awake();
         lastFartTime = DateTime.Now;
         UpdateNextFartTime();
         player = FindObjectOfType<Capybara>();
+        audioSource = GetComponent<AudioSource>();
 
-        satiation = 0;
+        satiation = satiationMax * 0.5f;
         restlessness = restlessnessMax;
     }
 
@@ -46,8 +52,8 @@ public class GameController : Singleton<GameController>
             lastFartTime = now;
             UpdateNextFartTime();
             player.EnqueueFartEvent(
-                UnityEngine.Random.Range(minimumFartForce, maximumFartForce),
-                UnityEngine.Random.Range(minimumDisturbanceAngle, maximumDisturbanceAngle));
+                UnityEngine.Random.Range(minimumFartForce * fartPara, maximumFartForce * fartPara),
+                UnityEngine.Random.Range(minimumDisturbanceAngle, maximumDisturbanceAngle)) ;
             Debug.Log("Enqueued standard fart event");
             StartCoroutine(EnqueueSecondFart());
         }
@@ -57,7 +63,7 @@ public class GameController : Singleton<GameController>
 
     private void UpdateNextFartTime()
     {
-        float nextDelta = UnityEngine.Random.Range(minimumTimeBetweenFarts, maximumTimeBetweenFarts);
+        float nextDelta = UnityEngine.Random.Range(minimumTimeBetweenFarts * (1 - fartPara), maximumTimeBetweenFarts * (1 - fartPara));
         nextFartTime = lastFartTime.AddSeconds(nextDelta);
     }
 
@@ -96,10 +102,29 @@ public class GameController : Singleton<GameController>
     {
         if (satiation >= 0)
             satiation -= satiationReduceSpeed * Time.deltaTime;
-        satiationBar.value = satiation / satiationMax;
+        satiationBar.value = fartPara = satiation / satiationMax;
+
 
         if (restlessness >= 0)
+        {
             restlessness -= restReduceSpeed * Time.deltaTime;
+            if (restlessness < 0.2 * restlessnessMax)
+            {
+                sceneTransfer.color = new Color(sceneTransfer.color.r, sceneTransfer.color.g, sceneTransfer.color.b, 1 - (restlessness / (0.2f * restlessnessMax)));
+            }
+            else
+                sceneTransfer.color = new Color(sceneTransfer.color.r, sceneTransfer.color.g, sceneTransfer.color.b, 0);
+        }
+        else
+            gameOverUI.SetActive(true);
+
         restlessnessBar.value = restlessness / restlessnessMax;
+
+        audioSource.pitch = (restlessness / restlessnessMax * (1.2f - 0.8f)) + 0.8f;
+    }
+
+    public void ReloadGame()
+    {
+        SceneManager.LoadScene(0);
     }
 }

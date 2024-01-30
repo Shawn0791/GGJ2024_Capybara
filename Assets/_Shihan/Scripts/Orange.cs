@@ -24,6 +24,7 @@ public class Orange : MonoBehaviour
                     audioSource.PlayOneShot(consumeSound);
                 }
                 GameController.Instance.SatiationAdd(satiationIncrease);
+                GameController.Instance.RestlessnessAdd(satiationIncrease);
                 Destroy(gameObject);
             }
         }
