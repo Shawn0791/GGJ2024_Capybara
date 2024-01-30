@@ -82,6 +82,13 @@ public class Crocodile : MonoBehaviour, IInteractible, IControllable
             transform.localScale = new Vector3(-Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
 
+        if (movement.x == 0 && movement.y == 0)
+            animator.SetBool("isWalking", false);
+        else
+            animator.SetBool("isWalking", true);
+
+        animator.SetBool("isSleeping", false);
+
         //Attack
 
     }
